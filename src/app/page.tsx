@@ -7,7 +7,7 @@ export default function Home() {
       <header className="border-b border-neutral-800/80 bg-neutral-950/70 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="relative w-9 h-9 rounded-xl overflow-hidden ring-1 ring-white/10 shadow-md shadow-purple-500/20">
+            <div className="relative w-9 h-9 rounded-xl overflow-hidden ring-1 ring-white/10 shadow-md shadow-purple-500/20 flex-shrink-0" style={{ position: "relative" }}>
               <Image
                 src="/logo.png"
                 alt="Vivid Wake Logo"
