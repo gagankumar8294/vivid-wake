@@ -19,7 +19,19 @@ import {
   FiPlay,
   FiArrowRight,
   FiHelpCircle,
-  FiLayers
+  FiLayers,
+  FiStar,
+  FiHeart,
+  FiFastForward,
+  FiCamera,
+  FiImage,
+  FiX,
+  FiXCircle,
+  FiCheck,
+  FiAward,
+  FiGrid,
+  FiPlayCircle,
+  FiActivity
 } from "react-icons/fi";
 
 export default function Home() {
@@ -46,10 +58,13 @@ export default function Home() {
     }
   };
 
-  const oemGuides = {
+  const oemGuides: Record<
+    "motorola" | "samsung" | "xiaomi" | "oneplus" | "pixel",
+    { brand: string; icon: React.ReactNode; steps: string[] }
+  > = {
     motorola: {
       brand: "Motorola (HelloUI / Clean AOSP)",
-      icon: "📱",
+      icon: <FiSmartphone className="text-teal-400 text-sm" />,
       steps: [
         "Tap 'Download VividWake APK' and tap 'Download anyway' in Chrome.",
         "Open Chrome Downloads, tap 'VividWake-v1.0.apk', and tap 'Settings' -> enable 'Allow from this source'.",
@@ -59,7 +74,7 @@ export default function Home() {
     },
     samsung: {
       brand: "Samsung (OneUI 6.0 / 6.1)",
-      icon: "✨",
+      icon: <FiStar className="text-amber-400 text-sm" />,
       steps: [
         "Download APK and open via 'My Files' -> 'Downloads' or Chrome notifications.",
         "If Samsung 'Auto Blocker' is enabled: go to Settings -> Security and privacy -> Auto Blocker -> Temporarily toggle OFF.",
@@ -69,7 +84,7 @@ export default function Home() {
     },
     xiaomi: {
       brand: "Xiaomi / POCO / Redmi (HyperOS / MIUI)",
-      icon: "⚡",
+      icon: <FiZap className="text-amber-400 text-sm" />,
       steps: [
         "Download APK -> In Package Installer, check 'I am aware of the possible risks' after the 10-second countdown.",
         "Tap 'OK' -> Tap 'More details' on Play Protect -> 'Install anyway'.",
@@ -79,7 +94,7 @@ export default function Home() {
     },
     oneplus: {
       brand: "OnePlus / Realme / OPPO (OxygenOS / ColorOS)",
-      icon: "🚀",
+      icon: <FiActivity className="text-rose-400 text-sm" />,
       steps: [
         "Download APK -> Tap 'Install' -> Tap 'Settings' -> Enable 'Allow app installs from this source'.",
         "Tap 'Install anyway' on the security scan prompt.",
@@ -89,7 +104,7 @@ export default function Home() {
     },
     pixel: {
       brand: "Google Pixel (Android 14 / 15)",
-      icon: "💎",
+      icon: <FiShield className="text-sky-400 text-sm" />,
       steps: [
         "Download APK in Chrome -> Tap 'Download anyway'.",
         "Tap notification -> Settings -> Enable 'Allow from this source'.",
@@ -266,7 +281,10 @@ export default function Home() {
                   App Home
                 </div>
               </div>
-              <div className="mt-3 text-xs text-slate-400 font-bold">📱 VividWake Manager</div>
+              <div className="mt-3 text-xs text-slate-400 font-bold flex items-center justify-center gap-1.5">
+                <FiSmartphone className="text-teal-400 text-sm" />
+                <span>VividWake Manager</span>
+              </div>
             </div>
 
             {/* Phone 2 (Center Hero): Active Lock Screen with Lucia 4K */}
@@ -277,12 +295,14 @@ export default function Home() {
                   alt="Lucia GTA VI Live Lock Screen"
                   className="w-full h-auto block"
                 />
-                <div className="absolute top-4 left-4 bg-gradient-to-r from-amber-500 to-amber-600 text-black px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider shadow-md">
-                  👑 Active Lock Screen
+                <div className="absolute top-4 left-4 bg-gradient-to-r from-amber-500 to-amber-600 text-black px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider shadow-md flex items-center gap-1">
+                  <FiAward className="text-black text-xs" />
+                  <span>Active Lock Screen</span>
                 </div>
               </div>
               <div className="mt-3 text-sm text-amber-300 font-extrabold flex items-center justify-center gap-1.5">
-                <span>🔥 GTA VI Lucia 4K 60FPS</span>
+                <FiZap className="text-amber-400 text-base" />
+                <span>GTA VI Lucia 4K 60FPS</span>
               </div>
             </div>
 
@@ -298,7 +318,10 @@ export default function Home() {
                   Store Catalog
                 </div>
               </div>
-              <div className="mt-3 text-xs text-slate-400 font-bold">🛒 Explore 4K Drops</div>
+              <div className="mt-3 text-xs text-slate-400 font-bold flex items-center justify-center gap-1.5">
+                <FiGrid className="text-sky-400 text-sm" />
+                <span>Explore 4K Drops</span>
+              </div>
             </div>
           </div>
         </div>
@@ -348,7 +371,8 @@ export default function Home() {
             {/* BEFORE CARD */}
             <div className="bg-black/60 border border-rose-500/30 rounded-3xl p-6 text-center">
               <div className="inline-flex items-center gap-1.5 bg-rose-500/20 text-rose-300 border border-rose-500/40 px-3 py-1 rounded-full text-xs font-extrabold mb-4">
-                ❌ BEFORE VIVIDWAKE
+                <FiXCircle className="text-rose-400 text-sm" />
+                <span>BEFORE VIVIDWAKE</span>
               </div>
               <div className="text-base font-bold text-white mb-2">
                 Boring Static Lock Screen
@@ -366,11 +390,13 @@ export default function Home() {
               </div>
 
               <div className="mt-4 flex flex-col gap-1.5 text-xs text-slate-400">
-                <div className="flex items-center justify-center gap-1 text-rose-400">
-                  <span>❌ Flat static image (no animation)</span>
+                <div className="flex items-center justify-center gap-1.5 text-rose-400">
+                  <FiX className="text-rose-400" />
+                  <span>Flat static image (no animation)</span>
                 </div>
-                <div className="flex items-center justify-center gap-1 text-slate-500">
-                  <span>❌ Generic uninspired look</span>
+                <div className="flex items-center justify-center gap-1.5 text-slate-500">
+                  <FiX className="text-slate-500" />
+                  <span>Generic uninspired look</span>
                 </div>
               </div>
             </div>
@@ -378,7 +404,8 @@ export default function Home() {
             {/* AFTER CARD */}
             <div className="bg-black/60 border border-emerald-500/40 rounded-3xl p-6 text-center shadow-[0_0_50px_rgba(16,185,129,0.15)]">
               <div className="inline-flex items-center gap-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-3 py-1 rounded-full text-xs font-extrabold mb-4">
-                ⚡ AFTER VIVIDWAKE
+                <FiZap className="text-emerald-400 text-sm" />
+                <span>AFTER VIVIDWAKE</span>
               </div>
               <div className="text-base font-bold text-white mb-2">
                 Cinematic 4K 60FPS Video Loop
@@ -400,11 +427,13 @@ export default function Home() {
               </div>
 
               <div className="mt-4 flex flex-col gap-1.5 text-xs text-slate-300 font-semibold">
-                <div className="flex items-center justify-center gap-1 text-emerald-400">
-                  <span>⚡ 60 FPS Native hardware video loop</span>
+                <div className="flex items-center justify-center gap-1.5 text-emerald-400">
+                  <FiCheck className="text-emerald-400" />
+                  <span>60 FPS Native hardware video loop</span>
                 </div>
-                <div className="flex items-center justify-center gap-1 text-teal-300">
-                  <span>⚡ 0.0% background battery drain</span>
+                <div className="flex items-center justify-center gap-1.5 text-teal-300">
+                  <FiCheck className="text-teal-300" />
+                  <span>0.0% background battery drain</span>
                 </div>
               </div>
             </div>
@@ -443,12 +472,12 @@ export default function Home() {
 
               {/* Replica visual */}
               <div className="bg-black/50 border border-white/10 rounded-xl p-3 my-3">
-                <div className="text-base mb-1">⚠️</div>
+                <div className="mb-1"><FiAlertTriangle className="text-amber-400 text-xl" /></div>
                 <div className="text-[11px] font-bold text-white mb-1">File might be harmful</div>
                 <div className="text-[10px] text-slate-400 mb-2">Do you want to download VividWake-v1.0.apk anyway?</div>
                 <div className="text-right">
-                  <span className="text-[10px] font-bold bg-sky-600 text-white px-2 py-1 rounded">
-                    Download anyway ➔
+                  <span className="text-[10px] font-bold bg-sky-600 text-white px-2 py-1 rounded inline-flex items-center gap-1">
+                    Download anyway <FiArrowRight className="text-xs" />
                   </span>
                 </div>
               </div>
@@ -483,7 +512,7 @@ export default function Home() {
               </div>
             </div>
             <p className="text-[11px] text-sky-300/90 leading-normal">
-              Tap <strong>Settings</strong> ➔ Toggle switch to <strong>ON</strong> ➔ Press back.
+              Tap <strong>Settings</strong> <FiArrowRight className="inline mx-1 text-sky-400" /> Toggle switch to <strong>ON</strong> <FiArrowRight className="inline mx-1 text-sky-400" /> Press back.
             </p>
           </div>
 
@@ -502,7 +531,7 @@ export default function Home() {
 
               {/* Replica visual */}
               <div className="bg-black/50 border border-white/10 rounded-xl p-3 my-3">
-                <div className="text-base mb-1">🛡️</div>
+                <div className="mb-1"><FiShield className="text-teal-400 text-xl" /></div>
                 <div className="text-[11px] font-bold text-white mb-1">Unrecognized app</div>
                 <div className="flex items-center justify-between mt-2">
                   <span className="text-[10px] text-sky-400 underline font-semibold">More details ▾</span>
@@ -513,7 +542,7 @@ export default function Home() {
               </div>
             </div>
             <p className="text-[11px] text-teal-300/90 leading-normal">
-              Tap <strong>More details</strong> ➔ click <strong>Install anyway</strong>. Complete!
+              Tap <strong>More details</strong> <FiArrowRight className="inline mx-1 text-teal-400" /> click <strong>Install anyway</strong>. Complete!
             </p>
           </div>
 
@@ -539,7 +568,7 @@ export default function Home() {
               </div>
             </div>
             <p className="text-[11px] text-emerald-300/90 leading-normal">
-              Tap <strong>"Apply to Lock Screen"</strong> ➔ choose <em>Home screen and lock screen</em>.
+              Tap <strong>"Apply to Lock Screen"</strong> <FiArrowRight className="inline mx-1 text-emerald-400" /> choose <em>Home screen and lock screen</em>.
             </p>
           </div>
 
@@ -595,7 +624,8 @@ export default function Home() {
                 : "bg-slate-900/60 text-slate-400 border border-white/5 hover:bg-slate-800"
             }`}
           >
-            <span>👑 GTA VI — Lucia Editorial Portrait</span>
+            <FiStar className="text-amber-400 text-base" />
+            <span>GTA VI — Lucia Editorial Portrait</span>
           </button>
 
           <button
@@ -606,7 +636,8 @@ export default function Home() {
                 : "bg-slate-900/60 text-slate-400 border border-white/5 hover:bg-slate-800"
             }`}
           >
-            <span>💋 Sabrina Carpenter — Taste Kiss Scene</span>
+            <FiHeart className="text-rose-400 text-base" />
+            <span>Sabrina Carpenter — Taste Kiss Scene</span>
           </button>
 
           <button
@@ -617,7 +648,8 @@ export default function Home() {
                 : "bg-slate-900/60 text-slate-400 border border-white/5 hover:bg-slate-800"
             }`}
           >
-            <span>🏍️ GTA VI — Lucia & Jason Wheelie</span>
+            <FiFastForward className="text-sky-400 text-base" />
+            <span>GTA VI — Lucia & Jason Wheelie</span>
           </button>
         </div>
 
@@ -672,8 +704,9 @@ export default function Home() {
                     className="w-full h-auto block"
                   />
                 </div>
-                <div className="mt-2.5 text-xs text-amber-300 font-bold">
-                  📸 Real Motorola g64 Lock Screen
+                <div className="mt-2.5 text-xs text-amber-300 font-bold flex items-center justify-center gap-1.5">
+                  <FiCamera className="text-amber-400" />
+                  <span>Real Motorola g64 Lock Screen</span>
                 </div>
               </div>
 
@@ -685,8 +718,9 @@ export default function Home() {
                     className="w-full h-auto block"
                   />
                 </div>
-                <div className="mt-2.5 text-xs text-slate-400 font-medium">
-                  ✨ 4K Portrait Source Master
+                <div className="mt-2.5 text-xs text-slate-400 font-medium flex items-center justify-center gap-1.5">
+                  <FiImage className="text-slate-400" />
+                  <span>4K Portrait Source Master</span>
                 </div>
               </div>
             </div>
@@ -744,8 +778,9 @@ export default function Home() {
                     className="w-full h-auto block"
                   />
                 </div>
-                <div className="mt-2.5 text-xs text-rose-300 font-bold">
-                  📸 Real Lock Screen Live Playback
+                <div className="mt-2.5 text-xs text-rose-300 font-bold flex items-center justify-center gap-1.5">
+                  <FiCamera className="text-rose-400" />
+                  <span>Real Lock Screen Live Playback</span>
                 </div>
               </div>
 
@@ -757,8 +792,9 @@ export default function Home() {
                     className="w-full h-auto block"
                   />
                 </div>
-                <div className="mt-2.5 text-xs text-slate-400 font-medium">
-                  📱 VividWake App Manager
+                <div className="mt-2.5 text-xs text-slate-400 font-medium flex items-center justify-center gap-1.5">
+                  <FiSmartphone className="text-slate-400" />
+                  <span>VividWake App Manager</span>
                 </div>
               </div>
             </div>
@@ -816,8 +852,9 @@ export default function Home() {
                     className="w-full h-auto block"
                   />
                 </div>
-                <div className="mt-2.5 text-xs text-sky-300 font-bold">
-                  🏍️ Vice City Wheelie Preview
+                <div className="mt-2.5 text-xs text-sky-300 font-bold flex items-center justify-center gap-1.5">
+                  <FiPlay className="text-sky-400" />
+                  <span>Vice City Wheelie Preview</span>
                 </div>
               </div>
             </div>
@@ -898,34 +935,79 @@ export default function Home() {
               <thead>
                 <tr className="border-b border-white/10">
                   <th className="p-4 text-xs font-semibold text-slate-400">Feature</th>
-                  <th className="p-4 text-sm font-extrabold text-teal-300">✨ VividWake Engine</th>
+                  <th className="p-4 text-sm font-extrabold text-teal-300">
+                    <span className="inline-flex items-center gap-1.5">
+                      <FiZap className="text-teal-400" />
+                      <span>VividWake Engine</span>
+                    </span>
+                  </th>
                   <th className="p-4 text-xs font-semibold text-slate-500">Traditional Live Wallpapers</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5 text-xs sm:text-sm">
                 <tr>
                   <td className="p-4 text-slate-200 font-medium">Background Battery Drain</td>
-                  <td className="p-4 text-emerald-400 font-bold">⚡ 0.0% (Decoder & Surface paused)</td>
-                  <td className="p-4 text-rose-400">❌ 8% - 15% daily battery drain</td>
+                  <td className="p-4 text-emerald-400 font-bold">
+                    <span className="inline-flex items-center gap-1.5">
+                      <FiCheck className="text-emerald-400" />
+                      <span>0.0% (Decoder & Surface paused)</span>
+                    </span>
+                  </td>
+                  <td className="p-4 text-rose-400">
+                    <span className="inline-flex items-center gap-1.5">
+                      <FiX className="text-rose-400" />
+                      <span>8% - 15% daily battery drain</span>
+                    </span>
+                  </td>
                 </tr>
                 <tr>
                   <td className="p-4 text-slate-200 font-medium">Wake-Up Lag</td>
-                  <td className="p-4 text-emerald-400 font-bold">⚡ 0ms (Instant hardware attach)</td>
-                  <td className="p-4 text-rose-400">❌ 500ms - 1.2s black screen delay</td>
+                  <td className="p-4 text-emerald-400 font-bold">
+                    <span className="inline-flex items-center gap-1.5">
+                      <FiCheck className="text-emerald-400" />
+                      <span>0ms (Instant hardware attach)</span>
+                    </span>
+                  </td>
+                  <td className="p-4 text-rose-400">
+                    <span className="inline-flex items-center gap-1.5">
+                      <FiX className="text-rose-400" />
+                      <span>500ms - 1.2s black screen delay</span>
+                    </span>
+                  </td>
                 </tr>
                 <tr>
                   <td className="p-4 text-slate-200 font-medium">Video Decoder</td>
-                  <td className="p-4 text-emerald-400 font-bold">⚡ Native MediaCodec + OpenGL ES 3.0</td>
+                  <td className="p-4 text-emerald-400 font-bold">
+                    <span className="inline-flex items-center gap-1.5">
+                      <FiCheck className="text-emerald-400" />
+                      <span>Native MediaCodec + OpenGL ES 3.0</span>
+                    </span>
+                  </td>
                   <td className="p-4 text-slate-400">Basic Software / WebViews</td>
                 </tr>
                 <tr>
                   <td className="p-4 text-slate-200 font-medium">Privacy & Ad-Trackers</td>
-                  <td className="p-4 text-emerald-400 font-bold">🛡️ 100% Ad-Free, No Data Mining</td>
-                  <td className="p-4 text-rose-400">❌ Fullscreen pop-up ads</td>
+                  <td className="p-4 text-emerald-400 font-bold">
+                    <span className="inline-flex items-center gap-1.5">
+                      <FiShield className="text-emerald-400" />
+                      <span>100% Ad-Free, No Data Mining</span>
+                    </span>
+                  </td>
+                  <td className="p-4 text-rose-400">
+                    <span className="inline-flex items-center gap-1.5">
+                      <FiX className="text-rose-400" />
+                      <span>Fullscreen pop-up ads</span>
+                    </span>
+                  </td>
                 </tr>
                 <tr>
                   <td className="p-4 text-slate-200 font-medium">Offline Mode</td>
-                  <td className="p-4 text-emerald-400 font-bold">⚡ Encrypted Vault (Plays without Wi-Fi)</td>
+                  <td className="p-4 text-emerald-400 font-bold">
+                    <span className="inline-flex items-center gap-1.5">
+                      <FiCheck className="text-emerald-400" />
+                      <span>Encrypted Vault (Plays without Wi-Fi)</span>
+                    </span>
+                  </td>
                   <td className="p-4 text-slate-400">Requires continuous internet streaming</td>
                 </tr>
               </tbody>
