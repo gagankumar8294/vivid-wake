@@ -5,6 +5,19 @@ html {
   scroll-padding-top: 80px;
 }
 
+@keyframes carouselProgress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.animate-carousel-progress {
+  animation: carouselProgress 4.5s linear infinite;
+}
+
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;

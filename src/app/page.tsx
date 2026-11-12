@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import {
   FiDownload,
@@ -15,6 +15,9 @@ import {
   FiLock,
   FiChevronDown,
   FiChevronUp,
+  FiChevronLeft,
+  FiChevronRight,
+  FiPause,
   FiExternalLink,
   FiPlay,
   FiArrowRight,
@@ -35,10 +38,37 @@ import {
 } from "react-icons/fi";
 
 export default function Home() {
+  const wallpaperKeys = ["lucia", "sabrina", "wheelie"] as const;
   const [activeWallpaperTab, setActiveWallpaperTab] = useState<"lucia" | "sabrina" | "wheelie">("lucia");
+  const [isCarouselPaused, setIsCarouselPaused] = useState(false);
   const [beforeAfterChoice, setBeforeAfterChoice] = useState<"lucia" | "sabrina">("lucia");
   const [activeOemTab, setActiveOemTab] = useState<"motorola" | "samsung" | "xiaomi" | "oneplus" | "pixel">("motorola");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (isCarouselPaused) return;
+    const interval = setInterval(() => {
+      setActiveWallpaperTab((prev) => {
+        const idx = wallpaperKeys.indexOf(prev);
+        return wallpaperKeys[(idx + 1) % wallpaperKeys.length];
+      });
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [isCarouselPaused]);
+
+  const handleNextWallpaper = () => {
+    setActiveWallpaperTab((prev) => {
+      const idx = wallpaperKeys.indexOf(prev);
+      return wallpaperKeys[(idx + 1) % wallpaperKeys.length];
+    });
+  };
+
+  const handlePrevWallpaper = () => {
+    setActiveWallpaperTab((prev) => {
+      const idx = wallpaperKeys.indexOf(prev);
+      return wallpaperKeys[(idx - 1 + wallpaperKeys.length) % wallpaperKeys.length];
+    });
+  };
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
@@ -600,7 +630,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION: FEATURED WALLPAPERS SHOWCASE */}
+      {/* SECTION: FEATURED WALLPAPERS SHOWCASE (AUTO-PLAYING CAROUSEL) */}
       <section id="showcase" className="max-w-6xl mx-auto px-6 py-16">
         <div className="text-center mb-10">
           <div className="text-xs font-bold tracking-widest text-teal-400 uppercase mb-2">
@@ -610,256 +640,397 @@ export default function Home() {
             Featured 60 FPS Video Wallpapers
           </h2>
           <p className="text-slate-400 text-sm md:text-base max-w-xl mx-auto mt-2">
-            Captured live on physical Android devices running VividWake. Click to preview the real lock screen visuals.
+            Captured live on physical Android devices running VividWake. Cycles automatically or click any card to inspect.
           </p>
         </div>
 
-        {/* Wallpaper Tabs */}
-        <div className="flex justify-center gap-3 mb-10 flex-wrap">
+        {/* 3 Interactive Cards / Carousel Selectors */}
+        <div className="grid sm:grid-cols-3 gap-4 mb-8">
+          {/* Card 1: Lucia Editorial Portrait */}
           <button
             onClick={() => setActiveWallpaperTab("lucia")}
-            className={`px-5 py-3 rounded-xl text-sm font-bold transition-all flex items-center gap-2 cursor-pointer ${
+            className={`text-left p-4 sm:p-5 rounded-2xl transition-all cursor-pointer relative overflow-hidden border ${
               activeWallpaperTab === "lucia"
-                ? "bg-amber-500/20 text-amber-300 border border-amber-500/50 shadow-lg shadow-amber-500/10"
-                : "bg-slate-900/60 text-slate-400 border border-white/5 hover:bg-slate-800"
+                ? "bg-amber-500/15 border-amber-500/60 shadow-lg shadow-amber-500/20 ring-1 ring-amber-500/40"
+                : "bg-slate-900/60 border-white/5 hover:bg-slate-800/80 hover:border-white/10"
             }`}
           >
-            <FiStar className="text-amber-400 text-base" />
-            <span>GTA VI — Lucia Editorial Portrait</span>
+            <div className="flex items-center justify-between mb-2">
+              <span className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-400">
+                <FiStar className="text-amber-400 text-sm" />
+                <span>DROP #1</span>
+              </span>
+              <span className="text-[10px] uppercase font-extrabold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                4K 60FPS
+              </span>
+            </div>
+            <div className="text-sm sm:text-base font-bold text-white mb-1">
+              GTA VI — Lucia Editorial Portrait
+            </div>
+            <div className="text-[11px] text-slate-400">
+              Hypnotic falling embers • 7.02 MB Full HD
+            </div>
+
+            {/* Active Card Progress Line */}
+            {activeWallpaperTab === "lucia" && (
+              <div className="w-full bg-white/10 h-1 rounded-full overflow-hidden mt-3">
+                <div
+                  key={`progress-lucia-${activeWallpaperTab}`}
+                  className={`h-full bg-amber-400 ${!isCarouselPaused ? "animate-carousel-progress" : "w-full"}`}
+                />
+              </div>
+            )}
           </button>
 
+          {/* Card 2: Sabrina Carpenter Taste Kiss Scene */}
           <button
             onClick={() => setActiveWallpaperTab("sabrina")}
-            className={`px-5 py-3 rounded-xl text-sm font-bold transition-all flex items-center gap-2 cursor-pointer ${
+            className={`text-left p-4 sm:p-5 rounded-2xl transition-all cursor-pointer relative overflow-hidden border ${
               activeWallpaperTab === "sabrina"
-                ? "bg-rose-500/20 text-rose-300 border border-rose-500/50 shadow-lg shadow-rose-500/10"
-                : "bg-slate-900/60 text-slate-400 border border-white/5 hover:bg-slate-800"
+                ? "bg-rose-500/15 border-rose-500/60 shadow-lg shadow-rose-500/20 ring-1 ring-rose-500/40"
+                : "bg-slate-900/60 border-white/5 hover:bg-slate-800/80 hover:border-white/10"
             }`}
           >
-            <FiHeart className="text-rose-400 text-base" />
-            <span>Sabrina Carpenter — Taste Kiss Scene</span>
+            <div className="flex items-center justify-between mb-2">
+              <span className="inline-flex items-center gap-1.5 text-xs font-bold text-rose-400">
+                <FiHeart className="text-rose-400 text-sm" />
+                <span>DROP #2</span>
+              </span>
+              <span className="text-[10px] uppercase font-extrabold px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30">
+                VIRAL HIT
+              </span>
+            </div>
+            <div className="text-sm sm:text-base font-bold text-white mb-1">
+              Sabrina Carpenter — Taste Kiss Scene
+            </div>
+            <div className="text-[11px] text-slate-400">
+              Seamless 60fps loop • 26.22 MB Ultra HD
+            </div>
+
+            {/* Active Card Progress Line */}
+            {activeWallpaperTab === "sabrina" && (
+              <div className="w-full bg-white/10 h-1 rounded-full overflow-hidden mt-3">
+                <div
+                  key={`progress-sabrina-${activeWallpaperTab}`}
+                  className={`h-full bg-rose-400 ${!isCarouselPaused ? "animate-carousel-progress" : "w-full"}`}
+                />
+              </div>
+            )}
           </button>
 
+          {/* Card 3: Lucia & Jason Highway Wheelie */}
           <button
             onClick={() => setActiveWallpaperTab("wheelie")}
-            className={`px-5 py-3 rounded-xl text-sm font-bold transition-all flex items-center gap-2 cursor-pointer ${
+            className={`text-left p-4 sm:p-5 rounded-2xl transition-all cursor-pointer relative overflow-hidden border ${
               activeWallpaperTab === "wheelie"
-                ? "bg-sky-500/20 text-sky-300 border border-sky-500/50 shadow-lg shadow-sky-500/10"
-                : "bg-slate-900/60 text-slate-400 border border-white/5 hover:bg-slate-800"
+                ? "bg-sky-500/15 border-sky-500/60 shadow-lg shadow-sky-500/20 ring-1 ring-sky-500/40"
+                : "bg-slate-900/60 border-white/5 hover:bg-slate-800/80 hover:border-white/10"
             }`}
           >
-            <FiFastForward className="text-sky-400 text-base" />
-            <span>GTA VI — Lucia & Jason Wheelie</span>
+            <div className="flex items-center justify-between mb-2">
+              <span className="inline-flex items-center gap-1.5 text-xs font-bold text-sky-400">
+                <FiFastForward className="text-sky-400 text-sm" />
+                <span>DROP #3</span>
+              </span>
+              <span className="text-[10px] uppercase font-extrabold px-2 py-0.5 rounded-full bg-sky-500/20 text-sky-300 border border-sky-500/30">
+                ACTION 60FPS
+              </span>
+            </div>
+            <div className="text-sm sm:text-base font-bold text-white mb-1">
+              GTA VI — Lucia & Jason Wheelie
+            </div>
+            <div className="text-[11px] text-slate-400">
+              Vice City highway action • 8.16 MB
+            </div>
+
+            {/* Active Card Progress Line */}
+            {activeWallpaperTab === "wheelie" && (
+              <div className="w-full bg-white/10 h-1 rounded-full overflow-hidden mt-3">
+                <div
+                  key={`progress-wheelie-${activeWallpaperTab}`}
+                  className={`h-full bg-sky-400 ${!isCarouselPaused ? "animate-carousel-progress" : "w-full"}`}
+                />
+              </div>
+            )}
           </button>
         </div>
 
-        {/* Tab 1: Lucia Portrait */}
-        {activeWallpaperTab === "lucia" && (
-          <div className="grid md:grid-cols-2 gap-10 items-center bg-slate-900/50 border border-amber-500/20 rounded-3xl p-8 md:p-12 backdrop-blur-md">
-            <div>
-              <div className="inline-block bg-amber-500/15 text-amber-300 border border-amber-500/30 px-3 py-1 rounded-full text-xs font-bold mb-4">
-                VIRAL SOCIAL HIT
-              </div>
-              <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-4">
-                GTA VI: Lucia Intense Editorial Portrait
-              </h3>
-              <p className="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
-                The viral hyper-realistic portrait of GTA VI's Lucia. Featuring her intense hazel gaze, layered brunette hair, layered diamond necklaces, and atmospheric falling embers. Smoothly looping at 60 FPS in 1080×1920.
-              </p>
-
-              <div className="grid grid-cols-2 gap-3 mb-8">
-                <div className="bg-black/30 p-3 rounded-xl border border-white/5">
-                  <div className="text-[11px] text-slate-400">Resolution</div>
-                  <div className="text-sm font-bold text-white">1080 × 1920 Full HD</div>
-                </div>
-                <div className="bg-black/30 p-3 rounded-xl border border-white/5">
-                  <div className="text-[11px] text-slate-400">File Size</div>
-                  <div className="text-sm font-bold text-white">7.02 MB (Optimized)</div>
-                </div>
-                <div className="bg-black/30 p-3 rounded-xl border border-white/5">
-                  <div className="text-[11px] text-slate-400">Framerate</div>
-                  <div className="text-sm font-bold text-teal-300">60 FPS Native Loop</div>
-                </div>
-                <div className="bg-black/30 p-3 rounded-xl border border-white/5">
-                  <div className="text-[11px] text-slate-400">Apply Speed</div>
-                  <div className="text-sm font-bold text-amber-300">1-Tap Direct Apply</div>
-                </div>
-              </div>
-
-              <a
-                href="/api/download"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black px-6 py-3 rounded-xl text-sm font-extrabold shadow-lg shadow-amber-500/20 transition-transform hover:scale-105 active:scale-95"
-              >
-                <FiDownload />
-                <span>Get App & Set Lucia As Lock Screen</span>
-              </a>
+        {/* Carousel Showcase Container with Navigation Controls & Pause-on-Hover */}
+        <div
+          className="relative group"
+          onMouseEnter={() => setIsCarouselPaused(true)}
+          onMouseLeave={() => setIsCarouselPaused(false)}
+        >
+          {/* Top Bar with Status and Auto-play Toggle */}
+          <div className="flex items-center justify-between mb-3 px-2">
+            <div className="flex items-center gap-2 text-xs text-slate-400">
+              <span className="font-semibold text-slate-300">
+                Wallpaper {activeWallpaperTab === "lucia" ? "1" : activeWallpaperTab === "sabrina" ? "2" : "3"} of 3
+              </span>
+              <span className="text-slate-600">•</span>
+              <span className="hidden sm:inline text-slate-500">Hover over card to pause</span>
             </div>
 
-            <div className="flex justify-center gap-4 flex-wrap">
-              <div className="text-center">
-                <div className="w-56 rounded-3xl overflow-hidden border-4 border-slate-800 shadow-2xl shadow-amber-500/20 bg-black">
-                  <img
-                    src="/guide/step5_lockscreen_lucia.png"
-                    alt="Lucia Lock Screen Live on Device"
-                    className="w-full h-auto block"
-                  />
-                </div>
-                <div className="mt-2.5 text-xs text-amber-300 font-bold flex items-center justify-center gap-1.5">
-                  <FiCamera className="text-amber-400" />
-                  <span>Real Motorola g64 Lock Screen</span>
-                </div>
-              </div>
-
-              <div className="text-center">
-                <div className="w-56 rounded-3xl overflow-hidden border-4 border-slate-800 shadow-xl bg-black">
-                  <img
-                    src="/guide/lucia_portrait.jpg"
-                    alt="Lucia Portrait Source"
-                    className="w-full h-auto block"
-                  />
-                </div>
-                <div className="mt-2.5 text-xs text-slate-400 font-medium flex items-center justify-center gap-1.5">
-                  <FiImage className="text-slate-400" />
-                  <span>4K Portrait Source Master</span>
-                </div>
-              </div>
-            </div>
+            <button
+              onClick={() => setIsCarouselPaused((p) => !p)}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/80 border border-white/10 text-xs text-slate-300 hover:text-white hover:border-teal-500/40 transition-colors cursor-pointer"
+            >
+              {isCarouselPaused ? (
+                <>
+                  <FiPlay className="text-teal-400 text-xs" />
+                  <span>Resume Auto-Scroll</span>
+                </>
+              ) : (
+                <>
+                  <FiPause className="text-teal-400 text-xs" />
+                  <span>Auto-Playing (4.5s)</span>
+                </>
+              )}
+            </button>
           </div>
-        )}
 
-        {/* Tab 2: Sabrina Carpenter */}
-        {activeWallpaperTab === "sabrina" && (
-          <div className="grid md:grid-cols-2 gap-10 items-center bg-slate-900/50 border border-rose-500/20 rounded-3xl p-8 md:p-12 backdrop-blur-md">
-            <div>
-              <div className="inline-block bg-rose-500/15 text-rose-300 border border-rose-500/30 px-3 py-1 rounded-full text-xs font-bold mb-4">
-                VIRAL TIKTOK HIT • 60 FPS
+          {/* Left Arrow Button */}
+          <button
+            onClick={handlePrevWallpaper}
+            aria-label="Previous Wallpaper"
+            className="absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-slate-900/90 border border-white/15 text-white flex items-center justify-center hover:bg-teal-500 hover:text-black hover:border-teal-400 transition-all shadow-2xl cursor-pointer"
+          >
+            <FiChevronLeft className="text-xl" />
+          </button>
+
+          {/* Right Arrow Button */}
+          <button
+            onClick={handleNextWallpaper}
+            aria-label="Next Wallpaper"
+            className="absolute -right-3 sm:-right-5 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-slate-900/90 border border-white/15 text-white flex items-center justify-center hover:bg-teal-500 hover:text-black hover:border-teal-400 transition-all shadow-2xl cursor-pointer"
+          >
+            <FiChevronRight className="text-xl" />
+          </button>
+
+          {/* Tab 1: Lucia Portrait */}
+          {activeWallpaperTab === "lucia" && (
+            <div className="grid md:grid-cols-2 gap-10 items-center bg-slate-900/50 border border-amber-500/20 rounded-3xl p-8 md:p-12 backdrop-blur-md transition-all duration-300">
+              <div>
+                <div className="inline-block bg-amber-500/15 text-amber-300 border border-amber-500/30 px-3 py-1 rounded-full text-xs font-bold mb-4">
+                  VIRAL SOCIAL HIT
+                </div>
+                <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-4">
+                  GTA VI: Lucia Intense Editorial Portrait
+                </h3>
+                <p className="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
+                  The viral hyper-realistic portrait of GTA VI's Lucia. Featuring her intense hazel gaze, layered brunette hair, layered diamond necklaces, and atmospheric falling embers. Smoothly looping at 60 FPS in 1080×1920.
+                </p>
+
+                <div className="grid grid-cols-2 gap-3 mb-8">
+                  <div className="bg-black/30 p-3 rounded-xl border border-white/5">
+                    <div className="text-[11px] text-slate-400">Resolution</div>
+                    <div className="text-sm font-bold text-white">1080 × 1920 Full HD</div>
+                  </div>
+                  <div className="bg-black/30 p-3 rounded-xl border border-white/5">
+                    <div className="text-[11px] text-slate-400">File Size</div>
+                    <div className="text-sm font-bold text-white">7.02 MB (Optimized)</div>
+                  </div>
+                  <div className="bg-black/30 p-3 rounded-xl border border-white/5">
+                    <div className="text-[11px] text-slate-400">Framerate</div>
+                    <div className="text-sm font-bold text-teal-300">60 FPS Native Loop</div>
+                  </div>
+                  <div className="bg-black/30 p-3 rounded-xl border border-white/5">
+                    <div className="text-[11px] text-slate-400">Apply Speed</div>
+                    <div className="text-sm font-bold text-amber-300">1-Tap Direct Apply</div>
+                  </div>
+                </div>
+
+                <a
+                  href="/api/download"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black px-6 py-3 rounded-xl text-sm font-extrabold shadow-lg shadow-amber-500/20 transition-transform hover:scale-105 active:scale-95"
+                >
+                  <FiDownload />
+                  <span>Get App & Set Lucia As Lock Screen</span>
+                </a>
               </div>
-              <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-4">
-                Sabrina Carpenter: Taste Kiss Scene
-              </h3>
-              <p className="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
-                The full viral 1080×1920 60fps video wallpaper of Sabrina Carpenter from the acclaimed 'Taste' music video. Seamless looping video with perfect portrait crop on your Android phone lock screen.
-              </p>
 
-              <div className="grid grid-cols-2 gap-3 mb-8">
-                <div className="bg-black/30 p-3 rounded-xl border border-white/5">
-                  <div className="text-[11px] text-slate-400">Clip Duration</div>
-                  <div className="text-sm font-bold text-white">15 Seconds Full Scene</div>
+              <div className="flex justify-center gap-4 flex-wrap">
+                <div className="text-center">
+                  <div className="w-56 rounded-3xl overflow-hidden border-4 border-slate-800 shadow-2xl shadow-amber-500/20 bg-black">
+                    <img
+                      src="/guide/step5_lockscreen_lucia.png"
+                      alt="Lucia Lock Screen Live on Device"
+                      className="w-full h-auto block"
+                    />
+                  </div>
+                  <div className="mt-2.5 text-xs text-amber-300 font-bold flex items-center justify-center gap-1.5">
+                    <FiCamera className="text-amber-400" />
+                    <span>Real Motorola g64 Lock Screen</span>
+                  </div>
                 </div>
-                <div className="bg-black/30 p-3 rounded-xl border border-white/5">
-                  <div className="text-[11px] text-slate-400">Master Video</div>
-                  <div className="text-sm font-bold text-white">26.22 MB Ultra HD</div>
-                </div>
-                <div className="bg-black/30 p-3 rounded-xl border border-white/5">
-                  <div className="text-[11px] text-slate-400">Framerate</div>
-                  <div className="text-sm font-bold text-rose-300">60 FPS Seamless Loop</div>
-                </div>
-                <div className="bg-black/30 p-3 rounded-xl border border-white/5">
-                  <div className="text-[11px] text-slate-400">Engine Status</div>
-                  <div className="text-sm font-bold text-teal-300">Active in My Wallpapers</div>
+
+                <div className="text-center">
+                  <div className="w-56 rounded-3xl overflow-hidden border-4 border-slate-800 shadow-xl bg-black">
+                    <img
+                      src="/guide/lucia_portrait.jpg"
+                      alt="Lucia Portrait Source"
+                      className="w-full h-auto block"
+                    />
+                  </div>
+                  <div className="mt-2.5 text-xs text-slate-400 font-medium flex items-center justify-center gap-1.5">
+                    <FiImage className="text-slate-400" />
+                    <span>4K Portrait Source Master</span>
+                  </div>
                 </div>
               </div>
-
-              <a
-                href="/api/download"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-600 to-rose-500 hover:from-rose-500 hover:to-rose-400 text-white px-6 py-3 rounded-xl text-sm font-extrabold shadow-lg shadow-rose-500/20 transition-transform hover:scale-105 active:scale-95"
-              >
-                <FiDownload />
-                <span>Download App & Apply Sabrina Wallpaper</span>
-              </a>
             </div>
+          )}
 
-            <div className="flex justify-center gap-4 flex-wrap">
-              <div className="text-center">
-                <div className="w-56 rounded-3xl overflow-hidden border-4 border-slate-800 shadow-2xl shadow-rose-500/20 bg-black">
-                  <img
-                    src="/guide/step4_lockscreen_sabrina.png"
-                    alt="Sabrina Carpenter Lock Screen Live"
-                    className="w-full h-auto block"
-                  />
+          {/* Tab 2: Sabrina Carpenter */}
+          {activeWallpaperTab === "sabrina" && (
+            <div className="grid md:grid-cols-2 gap-10 items-center bg-slate-900/50 border border-rose-500/20 rounded-3xl p-8 md:p-12 backdrop-blur-md transition-all duration-300">
+              <div>
+                <div className="inline-block bg-rose-500/15 text-rose-300 border border-rose-500/30 px-3 py-1 rounded-full text-xs font-bold mb-4">
+                  VIRAL TIKTOK HIT • 60 FPS
                 </div>
-                <div className="mt-2.5 text-xs text-rose-300 font-bold flex items-center justify-center gap-1.5">
-                  <FiCamera className="text-rose-400" />
-                  <span>Real Lock Screen Live Playback</span>
+                <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-4">
+                  Sabrina Carpenter: Taste Kiss Scene
+                </h3>
+                <p className="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
+                  The full viral 1080×1920 60fps video wallpaper of Sabrina Carpenter from the acclaimed 'Taste' music video. Seamless looping video with perfect portrait crop on your Android phone lock screen.
+                </p>
+
+                <div className="grid grid-cols-2 gap-3 mb-8">
+                  <div className="bg-black/30 p-3 rounded-xl border border-white/5">
+                    <div className="text-[11px] text-slate-400">Clip Duration</div>
+                    <div className="text-sm font-bold text-white">15 Seconds Full Scene</div>
+                  </div>
+                  <div className="bg-black/30 p-3 rounded-xl border border-white/5">
+                    <div className="text-[11px] text-slate-400">Master Video</div>
+                    <div className="text-sm font-bold text-white">26.22 MB Ultra HD</div>
+                  </div>
+                  <div className="bg-black/30 p-3 rounded-xl border border-white/5">
+                    <div className="text-[11px] text-slate-400">Framerate</div>
+                    <div className="text-sm font-bold text-rose-300">60 FPS Seamless Loop</div>
+                  </div>
+                  <div className="bg-black/30 p-3 rounded-xl border border-white/5">
+                    <div className="text-[11px] text-slate-400">Engine Status</div>
+                    <div className="text-sm font-bold text-teal-300">Active in My Wallpapers</div>
+                  </div>
                 </div>
+
+                <a
+                  href="/api/download"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-600 to-rose-500 hover:from-rose-500 hover:to-rose-400 text-white px-6 py-3 rounded-xl text-sm font-extrabold shadow-lg shadow-rose-500/20 transition-transform hover:scale-105 active:scale-95"
+                >
+                  <FiDownload />
+                  <span>Download App & Apply Sabrina Wallpaper</span>
+                </a>
               </div>
 
-              <div className="text-center">
-                <div className="w-56 rounded-3xl overflow-hidden border-4 border-slate-800 shadow-xl bg-black">
-                  <img
-                    src="/guide/step1_my_wallpapers.png"
-                    alt="Sabrina in My Wallpapers Tab"
-                    className="w-full h-auto block"
-                  />
+              <div className="flex justify-center gap-4 flex-wrap">
+                <div className="text-center">
+                  <div className="w-56 rounded-3xl overflow-hidden border-4 border-slate-800 shadow-2xl shadow-rose-500/20 bg-black">
+                    <img
+                      src="/guide/step4_lockscreen_sabrina.png"
+                      alt="Sabrina Carpenter Lock Screen Live"
+                      className="w-full h-auto block"
+                    />
+                  </div>
+                  <div className="mt-2.5 text-xs text-rose-300 font-bold flex items-center justify-center gap-1.5">
+                    <FiCamera className="text-rose-400" />
+                    <span>Real Lock Screen Live Playback</span>
+                  </div>
                 </div>
-                <div className="mt-2.5 text-xs text-slate-400 font-medium flex items-center justify-center gap-1.5">
-                  <FiSmartphone className="text-slate-400" />
-                  <span>VividWake App Manager</span>
+
+                <div className="text-center">
+                  <div className="w-56 rounded-3xl overflow-hidden border-4 border-slate-800 shadow-xl bg-black">
+                    <img
+                      src="/guide/step1_my_wallpapers.png"
+                      alt="Sabrina in My Wallpapers Tab"
+                      className="w-full h-auto block"
+                    />
+                  </div>
+                  <div className="mt-2.5 text-xs text-slate-400 font-medium flex items-center justify-center gap-1.5">
+                    <FiSmartphone className="text-slate-400" />
+                    <span>VividWake App Manager</span>
+                  </div>
                 </div>
               </div>
             </div>
+          )}
+
+          {/* Tab 3: Lucia Wheelie */}
+          {activeWallpaperTab === "wheelie" && (
+            <div className="grid md:grid-cols-2 gap-10 items-center bg-slate-900/50 border border-sky-500/20 rounded-3xl p-8 md:p-12 backdrop-blur-md transition-all duration-300">
+              <div>
+                <div className="inline-block bg-sky-500/15 text-sky-300 border border-sky-500/30 px-3 py-1 rounded-full text-xs font-bold mb-4">
+                  GTA VI ACTION • 60 FPS
+                </div>
+                <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-4">
+                  Lucia & Jason: Vice City Highway Wheelie
+                </h3>
+                <p className="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
+                  High-speed action sequence featuring Lucia riding pillion on a motorcycle wheelie across the sun-drenched neon streets of Vice City. Optimized for flawless looping.
+                </p>
+
+                <div className="grid grid-cols-2 gap-3 mb-8">
+                  <div className="bg-black/30 p-3 rounded-xl border border-white/5">
+                    <div className="text-[11px] text-slate-400">Scene Type</div>
+                    <div className="text-sm font-bold text-white">Cinematic Action</div>
+                  </div>
+                  <div className="bg-black/30 p-3 rounded-xl border border-white/5">
+                    <div className="text-[11px] text-slate-400">File Size</div>
+                    <div className="text-sm font-bold text-white">8.16 MB Compressed</div>
+                  </div>
+                  <div className="bg-black/30 p-3 rounded-xl border border-white/5">
+                    <div className="text-[11px] text-slate-400">Audio Loop</div>
+                    <div className="text-sm font-bold text-sky-300">Silent Seamless</div>
+                  </div>
+                  <div className="bg-black/30 p-3 rounded-xl border border-white/5">
+                    <div className="text-[11px] text-slate-400">Category</div>
+                    <div className="text-sm font-bold text-teal-300">Gaming / Vice City</div>
+                  </div>
+                </div>
+
+                <a
+                  href="/api/download"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 text-black px-6 py-3 rounded-xl text-sm font-extrabold shadow-lg shadow-sky-500/20 transition-transform hover:scale-105 active:scale-95"
+                >
+                  <FiDownload />
+                  <span>Download VividWake to Apply</span>
+                </a>
+              </div>
+
+              <div className="flex justify-center">
+                <div className="text-center">
+                  <div className="w-64 rounded-3xl overflow-hidden border-4 border-slate-800 shadow-2xl shadow-sky-500/20 bg-black">
+                    <img
+                      src="/guide/lucia_wheelie.jpg"
+                      alt="Lucia Motorcycle Wheelie"
+                      className="w-full h-auto block"
+                    />
+                  </div>
+                  <div className="mt-2.5 text-xs text-sky-300 font-bold flex items-center justify-center gap-1.5">
+                    <FiPlay className="text-sky-400" />
+                    <span>Vice City Wheelie Preview</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Dot Navigation Indicators */}
+          <div className="flex justify-center items-center gap-2.5 mt-6">
+            {wallpaperKeys.map((k, i) => (
+              <button
+                key={k}
+                onClick={() => setActiveWallpaperTab(k)}
+                aria-label={`Go to wallpaper ${i + 1}`}
+                className={`transition-all rounded-full cursor-pointer ${
+                  activeWallpaperTab === k
+                    ? "w-8 h-2.5 bg-teal-400 shadow-md shadow-teal-500/50"
+                    : "w-2.5 h-2.5 bg-slate-700 hover:bg-slate-500"
+                }`}
+              />
+            ))}
           </div>
-        )}
-
-        {/* Tab 3: Lucia Wheelie */}
-        {activeWallpaperTab === "wheelie" && (
-          <div className="grid md:grid-cols-2 gap-10 items-center bg-slate-900/50 border border-sky-500/20 rounded-3xl p-8 md:p-12 backdrop-blur-md">
-            <div>
-              <div className="inline-block bg-sky-500/15 text-sky-300 border border-sky-500/30 px-3 py-1 rounded-full text-xs font-bold mb-4">
-                GTA VI ACTION • 60 FPS
-              </div>
-              <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-4">
-                Lucia & Jason: Vice City Highway Wheelie
-              </h3>
-              <p className="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
-                High-speed action sequence featuring Lucia riding pillion on a motorcycle wheelie across the sun-drenched neon streets of Vice City. Optimized for flawless looping.
-              </p>
-
-              <div className="grid grid-cols-2 gap-3 mb-8">
-                <div className="bg-black/30 p-3 rounded-xl border border-white/5">
-                  <div className="text-[11px] text-slate-400">Scene Type</div>
-                  <div className="text-sm font-bold text-white">Cinematic Action</div>
-                </div>
-                <div className="bg-black/30 p-3 rounded-xl border border-white/5">
-                  <div className="text-[11px] text-slate-400">File Size</div>
-                  <div className="text-sm font-bold text-white">8.16 MB Compressed</div>
-                </div>
-                <div className="bg-black/30 p-3 rounded-xl border border-white/5">
-                  <div className="text-[11px] text-slate-400">Audio Loop</div>
-                  <div className="text-sm font-bold text-sky-300">Silent Seamless</div>
-                </div>
-                <div className="bg-black/30 p-3 rounded-xl border border-white/5">
-                  <div className="text-[11px] text-slate-400">Category</div>
-                  <div className="text-sm font-bold text-teal-300">Gaming / Vice City</div>
-                </div>
-              </div>
-
-              <a
-                href="/api/download"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 text-black px-6 py-3 rounded-xl text-sm font-extrabold shadow-lg shadow-sky-500/20 transition-transform hover:scale-105 active:scale-95"
-              >
-                <FiDownload />
-                <span>Download VividWake to Apply</span>
-              </a>
-            </div>
-
-            <div className="flex justify-center">
-              <div className="text-center">
-                <div className="w-64 rounded-3xl overflow-hidden border-4 border-slate-800 shadow-2xl shadow-sky-500/20 bg-black">
-                  <img
-                    src="/guide/lucia_wheelie.jpg"
-                    alt="Lucia Motorcycle Wheelie"
-                    className="w-full h-auto block"
-                  />
-                </div>
-                <div className="mt-2.5 text-xs text-sky-300 font-bold flex items-center justify-center gap-1.5">
-                  <FiPlay className="text-sky-400" />
-                  <span>Vice City Wheelie Preview</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+        </div>
       </section>
 
       {/* OEM Specific Brand Guide */}
