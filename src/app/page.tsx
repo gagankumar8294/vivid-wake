@@ -32,6 +32,20 @@ export default function Home() {
     setOpenFaq(openFaq === index ? null : index);
   };
 
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const elem = document.getElementById(id);
+    if (elem) {
+      const headerOffset = 80;
+      const elementPosition = elem.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
+
   const oemGuides = {
     motorola: {
       brand: "Motorola (HelloUI / Clean AOSP)",
@@ -145,19 +159,39 @@ export default function Home() {
           </div>
 
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
-            <a href="#before-after" className="hover:text-teal-300 transition-colors">
+            <a
+              href="#before-after"
+              onClick={(e) => scrollToSection(e, "before-after")}
+              className="hover:text-teal-300 transition-colors cursor-pointer"
+            >
               Before & After
             </a>
-            <a href="#install-steps" className="hover:text-teal-300 transition-colors">
+            <a
+              href="#install-steps"
+              onClick={(e) => scrollToSection(e, "install-steps")}
+              className="hover:text-teal-300 transition-colors cursor-pointer"
+            >
               Installation Steps
             </a>
-            <a href="#showcase" className="hover:text-teal-300 transition-colors">
+            <a
+              href="#showcase"
+              onClick={(e) => scrollToSection(e, "showcase")}
+              className="hover:text-teal-300 transition-colors cursor-pointer"
+            >
               Wallpapers
             </a>
-            <a href="#tech-specs" className="hover:text-teal-300 transition-colors">
+            <a
+              href="#tech-specs"
+              onClick={(e) => scrollToSection(e, "tech-specs")}
+              className="hover:text-teal-300 transition-colors cursor-pointer"
+            >
               0% Battery Tech
             </a>
-            <a href="#faq" className="hover:text-teal-300 transition-colors">
+            <a
+              href="#faq"
+              onClick={(e) => scrollToSection(e, "faq")}
+              className="hover:text-teal-300 transition-colors cursor-pointer"
+            >
               FAQ
             </a>
           </nav>
@@ -210,7 +244,8 @@ export default function Home() {
 
             <a
               href="#install-steps"
-              className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/15 text-slate-200 px-7 py-4 rounded-xl text-base font-semibold backdrop-blur-md transition-all"
+              onClick={(e) => scrollToSection(e, "install-steps")}
+              className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/15 text-slate-200 px-7 py-4 rounded-xl text-base font-semibold backdrop-blur-md transition-all cursor-pointer"
             >
               <span>See Installation Steps</span>
               <FiChevronDown className="text-lg text-teal-400" />
@@ -941,28 +976,6 @@ export default function Home() {
           })}
         </div>
       </section>
-
-      {/* Floating Bottom CTA Bar */}
-      <div className="sticky bottom-0 z-40 bg-[#06090e]/95 border-t border-teal-500/20 backdrop-blur-lg px-6 py-4">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <div className="text-sm sm:text-base font-extrabold text-white">
-              Ready to elevate your phone screen?
-            </div>
-            <div className="text-xs text-slate-400">
-              Download VividWake APK directly • No Play Store required • 100% Free & Safe
-            </div>
-          </div>
-
-          <a
-            href="/api/download"
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-500 text-white px-6 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold shadow-lg shadow-emerald-600/30 transition-transform hover:scale-105 active:scale-95"
-          >
-            <FiDownload className="text-base" />
-            <span>Download VividWake APK (19.7 MB)</span>
-          </a>
-        </div>
-      </div>
 
       {/* Footer */}
       <footer className="border-t border-white/5 py-8 text-center text-xs text-slate-500">
