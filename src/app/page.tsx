@@ -18,11 +18,13 @@ import {
   FiExternalLink,
   FiPlay,
   FiArrowRight,
-  FiHelpCircle
+  FiHelpCircle,
+  FiLayers
 } from "react-icons/fi";
 
 export default function Home() {
   const [activeWallpaperTab, setActiveWallpaperTab] = useState<"lucia" | "sabrina" | "wheelie">("lucia");
+  const [beforeAfterChoice, setBeforeAfterChoice] = useState<"lucia" | "sabrina">("lucia");
   const [activeOemTab, setActiveOemTab] = useState<"motorola" | "samsung" | "xiaomi" | "oneplus" | "pixel">("motorola");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
@@ -109,17 +111,17 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#06090e] text-slate-100 selection:bg-teal-500 selection:text-black">
       {/* Top Notification Announcement */}
-      <div className="bg-gradient-to-r from-emerald-900/30 via-teal-900/30 to-amber-900/20 border-b border-teal-500/20 px-4 py-2 text-center text-xs md:text-sm flex items-center justify-center gap-2">
-        <span className="bg-emerald-600 text-white px-2 py-0.5 rounded-full text-xs font-bold">
+      <div className="bg-gradient-to-r from-emerald-900/40 via-teal-900/30 to-amber-900/30 border-b border-teal-500/20 px-4 py-2 text-center text-xs md:text-sm flex items-center justify-center gap-2">
+        <span className="bg-emerald-600 text-white px-2 py-0.5 rounded-full text-xs font-bold shadow-sm">
           NEW v1.0.0
         </span>
-        <span className="text-slate-300">
+        <span className="text-slate-200">
           Official Direct APK Release — GTA VI Lucia & Sabrina Carpenter 4K 60FPS Wallpapers available now!
         </span>
       </div>
 
       {/* Navigation Header */}
-      <header className="sticky top-0 z-50 bg-[#06090e]/90 backdrop-blur-md border-b border-white/5">
+      <header className="sticky top-0 z-50 bg-[#06090e]/95 backdrop-blur-md border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 h-18 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="relative w-10 h-10 rounded-xl overflow-hidden ring-1 ring-teal-500/40 shadow-lg shadow-teal-500/20 flex items-center justify-center bg-slate-900">
@@ -143,14 +145,14 @@ export default function Home() {
           </div>
 
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
+            <a href="#before-after" className="hover:text-teal-300 transition-colors">
+              Before & After
+            </a>
+            <a href="#install-steps" className="hover:text-teal-300 transition-colors">
+              Installation Steps
+            </a>
             <a href="#showcase" className="hover:text-teal-300 transition-colors">
               Wallpapers
-            </a>
-            <a href="#install-guide" className="hover:text-teal-300 transition-colors">
-              Install Guide
-            </a>
-            <a href="#inapp-walkthrough" className="hover:text-teal-300 transition-colors">
-              App Setup
             </a>
             <a href="#tech-specs" className="hover:text-teal-300 transition-colors">
               0% Battery Tech
@@ -170,32 +172,32 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden pt-16 pb-12 px-6 text-center">
+      {/* Hero Section: VISUAL FIRST APP SHOWCASE */}
+      <section className="relative overflow-hidden pt-12 pb-16 px-6 text-center">
         {/* Ambient Glows */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-1/3 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-emerald-600/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 max-w-4xl mx-auto">
+        <div className="relative z-10 max-w-5xl mx-auto mb-10">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-teal-500/10 border border-teal-500/30 px-4 py-1.5 rounded-full text-xs font-semibold text-teal-300 mb-6">
+          <div className="inline-flex items-center gap-2 bg-teal-500/10 border border-teal-500/30 px-4 py-1.5 rounded-full text-xs font-semibold text-teal-300 mb-5">
             <FiShield className="text-sm" />
-            <span>Verified Safe Direct APK • No App Store Account Needed</span>
+            <span>Verified Sideload APK • 100% Free & Safe • No Play Store Needed</span>
           </div>
 
-          {/* Headline */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white mb-6 leading-[1.1]">
-            Transform Your Lock Screen Into A <br />
+          {/* Heading */}
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white mb-4 leading-[1.08]">
+            Cinematic 4K Video <br className="hidden sm:inline" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-sky-300 to-amber-300">
-              Cinematic 4K Live Experience
+              Lock Screens for Android
             </span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
-            VividWake brings hardware-accelerated 60 FPS video lock screens to Android with <strong className="text-white">0% background battery drain</strong> and <strong className="text-white">zero wake-up lag</strong>. Direct sideload release.
+          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mb-8 font-normal leading-relaxed">
+            Zero wake-up delay. 0% background battery drain. Real hardware-decoded 60 FPS video lock screen engine.
           </p>
 
-          {/* Action Buttons */}
+          {/* Action Button */}
           <div className="flex flex-wrap items-center justify-center gap-4 mb-14">
             <a
               href="/api/download"
@@ -203,56 +205,338 @@ export default function Home() {
             >
               <FiDownload className="text-xl" />
               <span>Download VividWake APK</span>
-              <span className="text-xs font-medium text-emerald-100 ml-1 opacity-90">v1.0.0 • 19.7 MB</span>
+              <span className="text-xs font-semibold text-emerald-100 ml-1 opacity-90">v1.0.0 • 19.7 MB</span>
             </a>
 
             <a
-              href="#install-guide"
+              href="#install-steps"
               className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/15 text-slate-200 px-7 py-4 rounded-xl text-base font-semibold backdrop-blur-md transition-all"
             >
-              <span>Installation & Warning Bypass</span>
+              <span>See Installation Steps</span>
               <FiChevronDown className="text-lg text-teal-400" />
             </a>
           </div>
 
-          {/* Quick Hardware Spec Badges */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto p-4 rounded-2xl bg-slate-900/60 border border-white/5 backdrop-blur-md">
-            <div className="flex items-center gap-3 p-3 text-left">
-              <FiBatteryCharging className="text-teal-400 text-2xl flex-shrink-0" />
-              <div>
-                <div className="text-sm font-bold text-white">0% Idle Battery</div>
-                <div className="text-[11px] text-slate-400">GL loop paused when awake</div>
+          {/* TRIPLE PHONE APP INTERFACE SHOWCASE (IMAGE HEAVY) */}
+          <div className="relative flex justify-center items-end gap-3 sm:gap-6 pt-4 pb-6 max-w-4xl mx-auto">
+            {/* Phone 1: App Interface */}
+            <div className="hidden sm:block w-52 md:w-60 transform -rotate-3 hover:rotate-0 transition-all duration-300 hover:scale-105 hover:z-30">
+              <div className="rounded-[32px] overflow-hidden border-[5px] border-slate-800 shadow-2xl bg-black relative">
+                <img
+                  src="/guide/step3_app_screen.png"
+                  alt="VividWake App Interface"
+                  className="w-full h-auto block"
+                />
+                <div className="absolute top-3 left-3 bg-teal-500 text-black px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider">
+                  App Home
+                </div>
+              </div>
+              <div className="mt-3 text-xs text-slate-400 font-bold">📱 VividWake Manager</div>
+            </div>
+
+            {/* Phone 2 (Center Hero): Active Lock Screen with Lucia 4K */}
+            <div className="w-64 sm:w-72 md:w-80 transform scale-105 z-20 hover:scale-110 transition-all duration-300">
+              <div className="rounded-[36px] overflow-hidden border-[6px] border-amber-400/80 shadow-[0_20px_60px_rgba(245,158,11,0.35)] bg-black relative">
+                <img
+                  src="/guide/step5_lockscreen_lucia.png"
+                  alt="Lucia GTA VI Live Lock Screen"
+                  className="w-full h-auto block"
+                />
+                <div className="absolute top-4 left-4 bg-gradient-to-r from-amber-500 to-amber-600 text-black px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider shadow-md">
+                  👑 Active Lock Screen
+                </div>
+              </div>
+              <div className="mt-3 text-sm text-amber-300 font-extrabold flex items-center justify-center gap-1.5">
+                <span>🔥 GTA VI Lucia 4K 60FPS</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 p-3 text-left">
-              <FiZap className="text-sky-400 text-2xl flex-shrink-0" />
-              <div>
-                <div className="text-sm font-bold text-white">0ms Wake Delay</div>
-                <div className="text-[11px] text-slate-400">Instant power button playback</div>
+            {/* Phone 3: Explore Store Catalog */}
+            <div className="hidden sm:block w-52 md:w-60 transform rotate-3 hover:rotate-0 transition-all duration-300 hover:scale-105 hover:z-30">
+              <div className="rounded-[32px] overflow-hidden border-[5px] border-slate-800 shadow-2xl bg-black relative">
+                <img
+                  src="/guide/step2_explore_store_clean.png"
+                  alt="Explore Store Catalog"
+                  className="w-full h-auto block"
+                />
+                <div className="absolute top-3 left-3 bg-sky-500 text-black px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider">
+                  Store Catalog
+                </div>
+              </div>
+              <div className="mt-3 text-xs text-slate-400 font-bold">🛒 Explore 4K Drops</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION: BEFORE vs AFTER COMPARISON */}
+      <section id="before-after" className="max-w-6xl mx-auto px-6 py-16">
+        <div className="bg-slate-900/60 border border-white/10 rounded-3xl p-8 md:p-12 backdrop-blur-md">
+          <div className="text-center mb-10">
+            <div className="text-xs font-bold tracking-widest text-teal-400 uppercase mb-2">
+              Transform Your Phone
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">
+              Before vs After VividWake
+            </h2>
+            <p className="text-slate-400 text-sm md:text-base max-w-xl mx-auto mt-2">
+              See the immediate visual upgrade from dull static wallpapers to hardware-accelerated 60 FPS video loops.
+            </p>
+
+            {/* Choose After Wallpaper */}
+            <div className="flex justify-center gap-3 mt-6">
+              <button
+                onClick={() => setBeforeAfterChoice("lucia")}
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                  beforeAfterChoice === "lucia"
+                    ? "bg-amber-500 text-black shadow-lg shadow-amber-500/20"
+                    : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+                }`}
+              >
+                Compare with GTA VI Lucia
+              </button>
+              <button
+                onClick={() => setBeforeAfterChoice("sabrina")}
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                  beforeAfterChoice === "sabrina"
+                    ? "bg-rose-500 text-white shadow-lg shadow-rose-500/20"
+                    : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+                }`}
+              >
+                Compare with Sabrina Carpenter
+              </button>
+            </div>
+          </div>
+
+          {/* Side-by-Side Comparison Container */}
+          <div className="grid md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto">
+            {/* BEFORE CARD */}
+            <div className="bg-black/60 border border-rose-500/30 rounded-3xl p-6 text-center">
+              <div className="inline-flex items-center gap-1.5 bg-rose-500/20 text-rose-300 border border-rose-500/40 px-3 py-1 rounded-full text-xs font-extrabold mb-4">
+                ❌ BEFORE VIVIDWAKE
+              </div>
+              <div className="text-base font-bold text-white mb-2">
+                Boring Static Lock Screen
+              </div>
+              <p className="text-xs text-slate-400 mb-5">
+                Standard flat Android wallpaper. 0 motion, 0 aesthetic, lifeless display.
+              </p>
+
+              <div className="w-56 sm:w-64 mx-auto rounded-[32px] overflow-hidden border-4 border-slate-700 shadow-2xl bg-black">
+                <img
+                  src="/guide/before_default_lockscreen.png"
+                  alt="Before: Default Static Lock Screen"
+                  className="w-full h-auto block filter grayscale-[25%]"
+                />
+              </div>
+
+              <div className="mt-4 flex flex-col gap-1.5 text-xs text-slate-400">
+                <div className="flex items-center justify-center gap-1 text-rose-400">
+                  <span>❌ Flat static image (no animation)</span>
+                </div>
+                <div className="flex items-center justify-center gap-1 text-slate-500">
+                  <span>❌ Generic uninspired look</span>
+                </div>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 p-3 text-left">
-              <FiCpu className="text-amber-400 text-2xl flex-shrink-0" />
-              <div>
-                <div className="text-sm font-bold text-white">60 FPS Native</div>
-                <div className="text-[11px] text-slate-400">OpenGL ES 3.0 Decoded</div>
+            {/* AFTER CARD */}
+            <div className="bg-black/60 border border-emerald-500/40 rounded-3xl p-6 text-center shadow-[0_0_50px_rgba(16,185,129,0.15)]">
+              <div className="inline-flex items-center gap-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-3 py-1 rounded-full text-xs font-extrabold mb-4">
+                ⚡ AFTER VIVIDWAKE
               </div>
-            </div>
+              <div className="text-base font-bold text-white mb-2">
+                Cinematic 4K 60FPS Video Loop
+              </div>
+              <p className="text-xs text-slate-400 mb-5">
+                Hypnotic live motion the millisecond you press the power button with 0% battery drain!
+              </p>
 
-            <div className="flex items-center gap-3 p-3 text-left">
-              <FiLock className="text-purple-400 text-2xl flex-shrink-0" />
-              <div>
-                <div className="text-sm font-bold text-white">Encrypted Vault</div>
-                <div className="text-[11px] text-slate-400">100% Offline playback</div>
+              <div className="w-56 sm:w-64 mx-auto rounded-[32px] overflow-hidden border-4 border-emerald-400 shadow-2xl shadow-emerald-500/30 bg-black">
+                <img
+                  src={
+                    beforeAfterChoice === "lucia"
+                      ? "/guide/step5_lockscreen_lucia.png"
+                      : "/guide/step4_lockscreen_sabrina.png"
+                  }
+                  alt="After: VividWake 4K Live Lock Screen"
+                  className="w-full h-auto block"
+                />
+              </div>
+
+              <div className="mt-4 flex flex-col gap-1.5 text-xs text-slate-300 font-semibold">
+                <div className="flex items-center justify-center gap-1 text-emerald-400">
+                  <span>⚡ 60 FPS Native hardware video loop</span>
+                </div>
+                <div className="flex items-center justify-center gap-1 text-teal-300">
+                  <span>⚡ 0.0% background battery drain</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Wallpapers Showcase */}
+      {/* SECTION: STEP-BY-STEP INSTALLATION & APP ONBOARDING (IMAGE HEAVY) */}
+      <section id="install-steps" className="max-w-6xl mx-auto px-6 py-16">
+        <div className="text-center mb-12">
+          <div className="text-xs font-bold tracking-widest text-teal-400 uppercase mb-2">
+            Step-By-Step Visual Guide
+          </div>
+          <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">
+            How To Install & Apply in 60 Seconds
+          </h2>
+          <p className="text-slate-400 text-sm md:text-base max-w-xl mx-auto mt-2">
+            Follow each visual step below. Tested and captured directly from Android 15.
+          </p>
+        </div>
+
+        {/* 5 Sequential Step Cards with Visual Smartphone Mockups */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
+          {/* Step 1: Chrome Warning */}
+          <div className="bg-slate-900/60 border border-amber-500/30 rounded-2xl p-4 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="bg-amber-600 text-white px-2 py-0.5 rounded-md text-xs font-black">
+                  STEP 1
+                </span>
+                <span className="text-[11px] text-amber-300 font-bold">Chrome Prompt</span>
+              </div>
+              <h4 className="text-sm font-extrabold text-white mb-2">
+                Tap 'Download anyway'
+              </h4>
+
+              {/* Replica visual */}
+              <div className="bg-black/50 border border-white/10 rounded-xl p-3 my-3">
+                <div className="text-base mb-1">⚠️</div>
+                <div className="text-[11px] font-bold text-white mb-1">File might be harmful</div>
+                <div className="text-[10px] text-slate-400 mb-2">Do you want to download VividWake-v1.0.apk anyway?</div>
+                <div className="text-right">
+                  <span className="text-[10px] font-bold bg-sky-600 text-white px-2 py-1 rounded">
+                    Download anyway ➔
+                  </span>
+                </div>
+              </div>
+            </div>
+            <p className="text-[11px] text-amber-300/90 leading-normal">
+              Google flags all direct APKs. Tap <strong>Download anyway</strong> to proceed safely.
+            </p>
+          </div>
+
+          {/* Step 2: Allow Unknown Apps */}
+          <div className="bg-slate-900/60 border border-sky-500/30 rounded-2xl p-4 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="bg-sky-600 text-white px-2 py-0.5 rounded-md text-xs font-black">
+                  STEP 2
+                </span>
+                <span className="text-[11px] text-sky-300 font-bold">Permissions</span>
+              </div>
+              <h4 className="text-sm font-extrabold text-white mb-2">
+                Enable 'Allow from source'
+              </h4>
+
+              {/* Replica visual */}
+              <div className="bg-black/50 border border-white/10 rounded-xl p-3 my-3">
+                <div className="text-[10px] text-slate-400 mb-1">Install unknown apps</div>
+                <div className="flex items-center justify-between bg-slate-800 p-2 rounded-lg">
+                  <span className="text-[10px] text-white font-semibold">Allow from this source</span>
+                  <div className="w-8 h-4 bg-emerald-500 rounded-full flex items-center p-0.5">
+                    <div className="w-3 h-3 bg-white rounded-full ml-auto shadow-sm" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p className="text-[11px] text-sky-300/90 leading-normal">
+              Tap <strong>Settings</strong> ➔ Toggle switch to <strong>ON</strong> ➔ Press back.
+            </p>
+          </div>
+
+          {/* Step 3: Google Play Protect */}
+          <div className="bg-slate-900/60 border border-teal-500/30 rounded-2xl p-4 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="bg-teal-600 text-white px-2 py-0.5 rounded-md text-xs font-black">
+                  STEP 3
+                </span>
+                <span className="text-[11px] text-teal-300 font-bold">Play Protect</span>
+              </div>
+              <h4 className="text-sm font-extrabold text-white mb-2">
+                Tap 'Install anyway'
+              </h4>
+
+              {/* Replica visual */}
+              <div className="bg-black/50 border border-white/10 rounded-xl p-3 my-3">
+                <div className="text-base mb-1">🛡️</div>
+                <div className="text-[11px] font-bold text-white mb-1">Unrecognized app</div>
+                <div className="flex items-center justify-between mt-2">
+                  <span className="text-[10px] text-sky-400 underline font-semibold">More details ▾</span>
+                  <span className="text-[10px] font-bold bg-emerald-600 text-white px-2 py-1 rounded">
+                    Install anyway
+                  </span>
+                </div>
+              </div>
+            </div>
+            <p className="text-[11px] text-teal-300/90 leading-normal">
+              Tap <strong>More details</strong> ➔ click <strong>Install anyway</strong>. Complete!
+            </p>
+          </div>
+
+          {/* Step 4: Launch App & Set Permission */}
+          <div className="bg-slate-900/60 border border-emerald-500/30 rounded-2xl p-4 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="bg-emerald-600 text-white px-2 py-0.5 rounded-md text-xs font-black">
+                  STEP 4
+                </span>
+                <span className="text-[11px] text-emerald-300 font-bold">App Setup</span>
+              </div>
+              <h4 className="text-sm font-extrabold text-white mb-2">
+                Set Live Wallpaper
+              </h4>
+
+              <div className="rounded-xl overflow-hidden border border-white/10 my-3 bg-black">
+                <img
+                  src="/guide/step3_app_screen.png"
+                  alt="App Setup Screen"
+                  className="w-full h-32 object-cover object-top"
+                />
+              </div>
+            </div>
+            <p className="text-[11px] text-emerald-300/90 leading-normal">
+              Tap <strong>"Apply to Lock Screen"</strong> ➔ choose <em>Home screen and lock screen</em>.
+            </p>
+          </div>
+
+          {/* Step 5: Download & Apply */}
+          <div className="bg-slate-900/60 border border-purple-500/30 rounded-2xl p-4 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="bg-purple-600 text-white px-2 py-0.5 rounded-md text-xs font-black">
+                  STEP 5
+                </span>
+                <span className="text-[11px] text-purple-300 font-bold">Instant Apply</span>
+              </div>
+              <h4 className="text-sm font-extrabold text-white mb-2">
+                Enjoy 4K 60FPS
+              </h4>
+
+              <div className="rounded-xl overflow-hidden border border-white/10 my-3 bg-black">
+                <img
+                  src="/guide/step5_lockscreen_lucia.png"
+                  alt="Lucia Lock Screen Live"
+                  className="w-full h-32 object-cover object-top"
+                />
+              </div>
+            </div>
+            <p className="text-[11px] text-purple-300/90 leading-normal">
+              Tap <strong>Apply</strong>! Lock your phone and wake it up to enjoy the cinematic loop!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION: FEATURED WALLPAPERS SHOWCASE */}
       <section id="showcase" className="max-w-6xl mx-auto px-6 py-16">
         <div className="text-center mb-10">
           <div className="text-xs font-bold tracking-widest text-teal-400 uppercase mb-2">
@@ -504,268 +788,6 @@ export default function Home() {
             </div>
           </div>
         )}
-      </section>
-
-      {/* Manual Sideload Installation Guide (OEM Warnings & Bypasses) */}
-      <section id="install-guide" className="max-w-6xl mx-auto px-6 py-16">
-        <div className="bg-slate-900/60 border border-white/10 rounded-3xl p-8 md:p-14 backdrop-blur-md">
-          <div className="text-center mb-12">
-            <div className="text-xs font-bold tracking-widest text-teal-400 uppercase mb-2">
-              Direct Sideload Walkthrough
-            </div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-              How To Safely Install On Android
-            </h2>
-            <p className="text-slate-400 text-sm md:text-base max-w-2xl mx-auto mt-2">
-              Because VividWake is released directly to users without Play Store middleman restrictions, Android displays standard security verification prompts. Follow these 3 simple steps to accept and install:
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {/* Step 1: Chrome Warning */}
-            <div className="bg-black/40 border border-amber-500/30 rounded-2xl p-6 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="bg-amber-600 text-white px-2.5 py-1 rounded-lg text-xs font-extrabold">
-                    STEP 1
-                  </span>
-                  <span className="text-amber-400 text-xs font-bold flex items-center gap-1.5">
-                    <FiAlertTriangle /> Chrome Download
-                  </span>
-                </div>
-
-                <h4 className="text-lg font-bold text-white mb-2">
-                  Tap 'Download anyway'
-                </h4>
-                <p className="text-slate-400 text-xs leading-relaxed mb-4">
-                  When downloading via Chrome, Android prompts: <em className="text-slate-200">"File might be harmful. Do you want to download VividWake-v1.0.apk anyway?"</em>
-                </p>
-
-                {/* Replica Card */}
-                <div className="bg-slate-800/90 border border-white/10 rounded-xl p-4 mb-4">
-                  <div className="flex items-start gap-3 mb-3">
-                    <span className="text-amber-400 text-xl">⚠️</span>
-                    <div>
-                      <div className="text-xs font-bold text-white">File might be harmful</div>
-                      <div className="text-[11px] text-slate-400">Do you want to download VividWake-v1.0.apk anyway?</div>
-                    </div>
-                  </div>
-                  <div className="flex justify-end gap-2">
-                    <span className="text-xs text-slate-400 px-2 py-1">Cancel</span>
-                    <span className="text-xs font-bold bg-sky-600 text-white px-3 py-1 rounded-md shadow-md shadow-sky-600/40">
-                      Download anyway ➔
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-amber-500/10 border-l-2 border-amber-500 p-2.5 rounded-r-lg text-xs text-amber-300">
-                💡 <strong>Why this appears:</strong> Standard Google warning for ANY direct APK download outside the Play Store. VividWake is 100% clean and safe.
-              </div>
-            </div>
-
-            {/* Step 2: Allow Unknown Apps */}
-            <div className="bg-black/40 border border-sky-500/30 rounded-2xl p-6 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="bg-sky-600 text-white px-2.5 py-1 rounded-lg text-xs font-extrabold">
-                    STEP 2
-                  </span>
-                  <span className="text-sky-400 text-xs font-bold flex items-center gap-1.5">
-                    <FiSettings /> System Security
-                  </span>
-                </div>
-
-                <h4 className="text-lg font-bold text-white mb-2">
-                  Enable 'Allow from this source'
-                </h4>
-                <p className="text-slate-400 text-xs leading-relaxed mb-4">
-                  When opening the downloaded file: <em className="text-slate-200">"For your security, your phone is not allowed to install unknown apps from this source."</em>
-                </p>
-
-                {/* Replica Card */}
-                <div className="bg-slate-800/90 border border-white/10 rounded-xl p-4 mb-4">
-                  <div className="text-[11px] text-slate-400 mb-2">Chrome • Install unknown apps</div>
-                  <div className="flex items-center justify-between bg-black/40 p-2.5 rounded-lg">
-                    <span className="text-xs font-semibold text-white">Allow from this source</span>
-                    <div className="w-10 h-5 bg-emerald-500 rounded-full flex items-center p-0.5">
-                      <div className="w-4 h-4 bg-white rounded-full ml-auto shadow-sm" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-sky-500/10 border-l-2 border-sky-500 p-2.5 rounded-r-lg text-xs text-sky-300">
-                👉 <strong>Action:</strong> Tap <strong>Settings</strong> ➔ Toggle switch to <strong>ON</strong> ➔ Press Back to resume install.
-              </div>
-            </div>
-
-            {/* Step 3: Google Play Protect */}
-            <div className="bg-black/40 border border-emerald-500/30 rounded-2xl p-6 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="bg-emerald-600 text-white px-2.5 py-1 rounded-lg text-xs font-extrabold">
-                    STEP 3
-                  </span>
-                  <span className="text-teal-400 text-xs font-bold flex items-center gap-1.5">
-                    <FiShield /> Play Protect
-                  </span>
-                </div>
-
-                <h4 className="text-lg font-bold text-white mb-2">
-                  Tap 'More details' ➔ 'Install anyway'
-                </h4>
-                <p className="text-slate-400 text-xs leading-relaxed mb-4">
-                  Play Protect may display: <em className="text-slate-200">"Play Protect doesn't recognize this app's developer"</em> or <em className="text-slate-200">"Blocked by Play Protect"</em>.
-                </p>
-
-                {/* Replica Card */}
-                <div className="bg-slate-800/90 border border-white/10 rounded-xl p-4 mb-4">
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <span className="text-teal-400 text-base">🛡️</span>
-                    <span className="text-xs font-bold text-white">Play Protect Alert</span>
-                  </div>
-                  <div className="text-[11px] text-slate-400 mb-3">
-                    Apps from unrecognized developers can sometimes be unsafe.
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-sky-400 underline font-semibold">More details ▾</span>
-                    <span className="text-xs font-bold bg-emerald-600 text-white px-3 py-1 rounded-md shadow-md shadow-emerald-600/40">
-                      Install anyway
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-emerald-500/10 border-l-2 border-emerald-500 p-2.5 rounded-r-lg text-xs text-teal-300">
-                ✅ <strong>Done:</strong> Tap <strong>More details</strong>, then click <strong>Install anyway</strong>. App installs immediately!
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* In-App Setup Walkthrough (Real Device Screenshots) */}
-      <section id="inapp-walkthrough" className="max-w-6xl mx-auto px-6 py-16">
-        <div className="text-center mb-12">
-          <div className="text-xs font-bold tracking-widest text-teal-400 uppercase mb-2">
-            In-App Setup Walkthrough
-          </div>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-            How To Download & Apply Live Wallpapers
-          </h2>
-          <p className="text-slate-400 text-sm md:text-base max-w-xl mx-auto mt-2">
-            Visual step-by-step walkthrough captured directly from the live app on Motorola g64.
-          </p>
-        </div>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Step 1 */}
-          <div className="bg-slate-900/60 border border-white/10 rounded-2xl overflow-hidden flex flex-col">
-            <div className="h-80 bg-black relative overflow-hidden">
-              <img
-                src="/guide/step1_my_wallpapers.png"
-                alt="My Wallpapers Tab"
-                className="w-full h-full object-cover object-top"
-              />
-              <div className="absolute top-3 left-3 bg-emerald-600 text-white px-2.5 py-1 rounded-md text-xs font-extrabold">
-                STEP 1
-              </div>
-            </div>
-            <div className="p-5 flex-1 flex flex-col justify-between">
-              <div>
-                <h4 className="text-base font-bold text-white mb-2">
-                  Launch App & Enable Permission
-                </h4>
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  Tap <strong>"Apply to Lock Screen"</strong>. The Android Live Wallpaper chooser opens — select <strong>"Home screen and lock screen"</strong>.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Step 2 */}
-          <div className="bg-slate-900/60 border border-white/10 rounded-2xl overflow-hidden flex flex-col">
-            <div className="h-80 bg-black relative overflow-hidden">
-              <img
-                src="/guide/step2_explore_store_clean.png"
-                alt="Explore Store Catalog"
-                className="w-full h-full object-cover object-top"
-              />
-              <div className="absolute top-3 left-3 bg-sky-600 text-white px-2.5 py-1 rounded-md text-xs font-extrabold">
-                STEP 2
-              </div>
-            </div>
-            <div className="p-5 flex-1 flex flex-col justify-between">
-              <div>
-                <h4 className="text-base font-bold text-white mb-2">
-                  Browse 'Explore Store' Tab
-                </h4>
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  Browse curated 4K 60FPS viral wallpapers including <em>GTA VI Lucia Portrait</em>, <em>Lucia Wheelie</em>, and VIP drops.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Step 3 */}
-          <div className="bg-slate-900/60 border border-white/10 rounded-2xl overflow-hidden flex flex-col">
-            <div className="h-80 bg-slate-950 relative flex flex-col justify-center items-center p-6 border-b border-white/5">
-              <div className="absolute top-3 left-3 bg-amber-600 text-white px-2.5 py-1 rounded-md text-xs font-extrabold">
-                STEP 3
-              </div>
-
-              {/* Progress UI Card */}
-              <div className="w-full bg-slate-900 border border-teal-500/30 rounded-xl p-4 shadow-xl">
-                <div className="flex items-center gap-2 mb-3">
-                  <FiDownload className="text-teal-400 text-base" />
-                  <span className="text-xs font-bold text-white">Setting up download...</span>
-                </div>
-                <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden mb-2">
-                  <div className="w-3/4 h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full" />
-                </div>
-                <div className="flex justify-between text-[10px] text-slate-400">
-                  <span>Encrypted vault stream</span>
-                  <span className="text-teal-300 font-bold">Ready in 2s</span>
-                </div>
-              </div>
-            </div>
-            <div className="p-5 flex-1 flex flex-col justify-between">
-              <div>
-                <h4 className="text-base font-bold text-white mb-2">
-                  Fast Vault Download
-                </h4>
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  Tap <strong>Download</strong>. VividWake displays an emerald setup indicator and streams the 4K 60FPS video into your offline encrypted vault.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Step 4 */}
-          <div className="bg-slate-900/60 border border-white/10 rounded-2xl overflow-hidden flex flex-col">
-            <div className="h-80 bg-black relative overflow-hidden">
-              <img
-                src="/guide/step5_lockscreen_lucia.png"
-                alt="Lucia Applied on Lock Screen"
-                className="w-full h-full object-cover object-top"
-              />
-              <div className="absolute top-3 left-3 bg-purple-600 text-white px-2.5 py-1 rounded-md text-xs font-extrabold">
-                STEP 4
-              </div>
-            </div>
-            <div className="p-5 flex-1 flex flex-col justify-between">
-              <div>
-                <h4 className="text-base font-bold text-white mb-2">
-                  1-Tap Instant 'Apply'
-                </h4>
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  Tap <strong>Apply</strong>! The lock screen immediately updates. Press your phone's power button to enjoy the seamless 4K loop!
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* OEM Specific Brand Guide */}
