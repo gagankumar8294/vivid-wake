@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Vivid Wake",
-  description: "Magical live wallpapers and seamless interactive video experiences.",
+  title: "VividWake — Cinematic 4K Video Lock Screen for Android | Download APK",
+  description: "Download VividWake APK directly from our official website. 60 FPS video lock screen engine with zero wake delay, 0% background battery drain, and viral 4K wallpapers including GTA VI Lucia and Sabrina Carpenter.",
   icons: {
     icon: "/logo.png",
   },
