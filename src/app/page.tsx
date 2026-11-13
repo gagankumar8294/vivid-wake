@@ -34,7 +34,9 @@ import {
   FiAward,
   FiGrid,
   FiPlayCircle,
-  FiActivity
+  FiActivity,
+  FiShoppingBag,
+  FiEye
 } from "react-icons/fi";
 
 export default function Home() {
@@ -44,6 +46,70 @@ export default function Home() {
   const [beforeAfterChoice, setBeforeAfterChoice] = useState<"lucia" | "sabrina">("lucia");
   const [activeOemTab, setActiveOemTab] = useState<"motorola" | "samsung" | "xiaomi" | "oneplus" | "pixel">("motorola");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [activeStoreStep, setActiveStoreStep] = useState<number>(0);
+
+  const storeSteps = [
+    {
+      step: 1,
+      tag: "EXPLORE STORE",
+      title: "Switch to 'Explore Store' Tab",
+      desc: "Open VividWake on your Android device and tap the 'Explore Store' tab on the top segmented bar to load the real-time cloud catalog of viral 4K video wallpapers.",
+      tip: "You can search drops by keywords or filter by categories like Gaming, Celebrity, and Aesthetics.",
+      image: "/guide/store_step1_catalog.png",
+      caption: "Explore Store Cloud Catalog Interface",
+      accent: "teal"
+    },
+    {
+      step: 2,
+      tag: "CHOOSE & DOWNLOAD",
+      title: "Select Wallpaper & Tap 'Download'",
+      desc: "Scroll through curated drops including GTA VI Lucia Intense Portrait (7.02 MB), Sabrina Carpenter Taste (26.22 MB), or Lucia & Jason Wheelie (10.41 MB). Tap the purple 'Download' button to stream the 60fps MP4 master directly to your offline vault.",
+      tip: "Files are stored locally in an encrypted vault, so they play 100% offline without using your mobile data.",
+      image: "/guide/store_step2_browse.png",
+      caption: "Real-Time 4K Catalog with 1-Tap Download",
+      accent: "amber"
+    },
+    {
+      step: 3,
+      tag: "SYSTEM PREVIEW",
+      title: "Tap 'Set Wallpaper' in Live Picker",
+      desc: "As soon as the download finishes, VividWake automatically opens Android's native Live Wallpaper Picker. You can preview the 60 FPS video loop rendering smoothly on your screen. Tap 'Set wallpaper' at the bottom.",
+      tip: "Android uses hardware OpenGL ES 3.0 decoding for instant 0ms latency with zero lag.",
+      image: "/guide/store_step3_set_wallpaper_dialog.png",
+      caption: "Native Android 15 Live Wallpaper Preview",
+      accent: "purple"
+    },
+    {
+      step: 4,
+      tag: "APPLY DESTINATION",
+      title: "Choose 'Home screen and lock screen'",
+      desc: "When the system destination prompt appears, select 'Home screen and lock screen' (or lock screen only). This tells Android to bind VividWake's video engine to your power button wake events.",
+      tip: "The video plays seamlessly on wake and instantly pauses decoding when unlocked, resulting in 0.0% background battery drain.",
+      image: "/guide/store_step4_choose_destination.png",
+      caption: "Android Destination Selector Dialog",
+      accent: "sky"
+    },
+    {
+      step: 5,
+      tag: "PERMANENT VAULT",
+      title: "Verified Active in 'My Wallpapers'",
+      desc: "VividWake returns to the 'My Wallpapers' tab displaying your newly downloaded wallpaper marked with the bright green '✓ ACTIVE' badge. Your wallpaper is permanently saved on device and ready to switch anytime with 1 tap.",
+      tip: "Download multiple wallpapers and switch between them instantly without waiting or re-downloading.",
+      image: "/guide/store_step5_my_wallpapers_active.png",
+      caption: "Offline Vault with Active Green Status Badge",
+      accent: "emerald"
+    },
+    {
+      step: 6,
+      tag: "LIVE ON PHONE",
+      title: "Lock Your Phone & Wake Up to 4K Motion!",
+      desc: "Press your phone's power button to lock the screen, then press it again to wake it up. Behold the hypnotic 60 FPS native video loop playing live on your phone lock screen!",
+      tip: "Tested and verified live on Motorola HelloUI (Android 15), Samsung OneUI, Google Pixel, Xiaomi HyperOS, and OnePlus.",
+      image: "/guide/store_step6_live_lockscreen.png",
+      caption: "Live 60 FPS Wallpaper Running on Physical Phone",
+      accent: "teal"
+    }
+  ];
 
   useEffect(() => {
     if (isCarouselPaused) return;
@@ -203,7 +269,7 @@ export default function Home() {
             </div>
           </div>
 
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
+          <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-slate-400">
             <a
               href="#before-after"
               onClick={(e) => scrollToSection(e, "before-after")}
@@ -216,7 +282,14 @@ export default function Home() {
               onClick={(e) => scrollToSection(e, "install-steps")}
               className="hover:text-teal-300 transition-colors cursor-pointer"
             >
-              Installation Steps
+              Install Guide
+            </a>
+            <a
+              href="#store-walkthrough"
+              onClick={(e) => scrollToSection(e, "store-walkthrough")}
+              className="hover:text-teal-300 transition-colors cursor-pointer font-bold text-slate-200"
+            >
+              Store & Setup Guide
             </a>
             <a
               href="#showcase"
@@ -627,6 +700,169 @@ export default function Home() {
               Tap <strong>Apply</strong>! Lock your phone and wake it up to enjoy the cinematic loop!
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* SECTION: HOW TO DOWNLOAD & SETUP FROM EXPLORE STORE (START FROM START) */}
+      <section id="store-walkthrough" className="max-w-6xl mx-auto px-6 py-20 border-t border-white/5">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 bg-teal-500/10 border border-teal-500/30 px-3.5 py-1.5 rounded-full text-xs font-bold text-teal-300 mb-4">
+            <FiShoppingBag className="text-sm" />
+            <span>START FROM START • EXPLORE STORE & SETUP GUIDE</span>
+          </div>
+          <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">
+            How to Download & Apply From Explore Store
+          </h2>
+          <p className="text-slate-400 text-sm md:text-base max-w-2xl mx-auto mt-3">
+            Never get lost. Follow each step below captured live from Android 15 to browse, stream, and set your 4K 60FPS lock screen wallpaper in seconds.
+          </p>
+        </div>
+
+        {/* Step Selector Tabs (Interactive 6-step nav) */}
+        <div className="flex justify-center gap-2 mb-10 overflow-x-auto pb-2 scrollbar-none">
+          {storeSteps.map((st, idx) => {
+            const isActive = activeStoreStep === idx;
+            return (
+              <button
+                key={st.step}
+                onClick={() => setActiveStoreStep(idx)}
+                className={`px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 whitespace-nowrap cursor-pointer ${
+                  isActive
+                    ? "bg-teal-500/20 text-teal-300 border border-teal-500/60 shadow-lg shadow-teal-500/10"
+                    : "bg-slate-900/60 text-slate-400 border border-white/5 hover:bg-slate-800"
+                }`}
+              >
+                <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black ${
+                  isActive ? "bg-teal-400 text-black" : "bg-slate-800 text-slate-300"
+                }`}>
+                  {st.step}
+                </span>
+                <span>{st.tag}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Highlighted Step Feature Card (Side by Side Walkthrough) */}
+        <div className="bg-slate-900/60 border border-teal-500/20 rounded-3xl p-6 md:p-10 backdrop-blur-md mb-12 relative overflow-hidden">
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Step Explanation Column */}
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="bg-teal-500 text-black px-2.5 py-0.5 rounded-md text-xs font-extrabold">
+                  STEP {storeSteps[activeStoreStep].step} OF {storeSteps.length}
+                </span>
+                <span className="text-xs font-bold text-teal-400 uppercase tracking-wider">
+                  {storeSteps[activeStoreStep].tag}
+                </span>
+              </div>
+
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-4">
+                {storeSteps[activeStoreStep].title}
+              </h3>
+
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                {storeSteps[activeStoreStep].desc}
+              </p>
+
+              {/* Pro Tip Box */}
+              <div className="bg-black/40 border border-white/10 rounded-2xl p-4 mb-8">
+                <div className="flex items-start gap-2.5">
+                  <FiCheck className="text-emerald-400 text-lg flex-shrink-0 mt-0.5" />
+                  <div className="text-xs text-slate-300 leading-normal">
+                    <strong className="text-emerald-300">How It Works: </strong>
+                    {storeSteps[activeStoreStep].tip}
+                  </div>
+                </div>
+              </div>
+
+              {/* Navigation buttons between steps */}
+              <div className="flex items-center gap-3">
+                <button
+                  disabled={activeStoreStep === 0}
+                  onClick={() => setActiveStoreStep((p) => Math.max(0, p - 1))}
+                  className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                    activeStoreStep === 0
+                      ? "bg-slate-800/40 text-slate-600 border border-white/5 cursor-not-allowed"
+                      : "bg-slate-800 text-slate-200 border border-white/10 hover:bg-slate-700 cursor-pointer"
+                  }`}
+                >
+                  <FiChevronLeft />
+                  <span>Previous Step</span>
+                </button>
+
+                <button
+                  onClick={() => setActiveStoreStep((p) => (p + 1) % storeSteps.length)}
+                  className="px-5 py-2.5 rounded-xl text-xs font-bold bg-teal-500 hover:bg-teal-400 text-black flex items-center gap-1.5 shadow-md shadow-teal-500/20 transition-all cursor-pointer"
+                >
+                  <span>{activeStoreStep === storeSteps.length - 1 ? "Start Over" : "Next Step"}</span>
+                  <FiArrowRight />
+                </button>
+              </div>
+            </div>
+
+            {/* Step Smartphone Screenshot Preview */}
+            <div className="flex flex-col items-center justify-center">
+              <div className="w-64 sm:w-72 rounded-[36px] overflow-hidden border-[5px] border-slate-700 shadow-2xl shadow-teal-500/10 bg-black">
+                <img
+                  src={storeSteps[activeStoreStep].image}
+                  alt={storeSteps[activeStoreStep].caption}
+                  className="w-full h-auto block"
+                />
+              </div>
+              <div className="mt-3 text-xs text-slate-400 font-semibold flex items-center gap-1.5">
+                <FiCamera className="text-teal-400" />
+                <span>{storeSteps[activeStoreStep].caption}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 6 Visual Cards Grid (All Steps at a Glance) */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {storeSteps.map((st, idx) => (
+            <div
+              key={st.step}
+              onClick={() => setActiveStoreStep(idx)}
+              className={`rounded-2xl p-4 border transition-all cursor-pointer flex flex-col justify-between ${
+                activeStoreStep === idx
+                  ? "bg-slate-800/90 border-teal-500/50 shadow-lg shadow-teal-500/10 ring-1 ring-teal-500/30"
+                  : "bg-slate-900/60 border-white/5 hover:bg-slate-800/60 hover:border-white/15"
+              }`}
+            >
+              <div>
+                <div className="flex items-center justify-between mb-2.5">
+                  <span className="bg-slate-800 text-teal-300 border border-teal-500/30 px-2 py-0.5 rounded text-[11px] font-black">
+                    STEP {st.step}
+                  </span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                    {st.tag}
+                  </span>
+                </div>
+
+                <h4 className="text-sm font-bold text-white mb-2 line-clamp-1">
+                  {st.title}
+                </h4>
+
+                <div className="rounded-xl overflow-hidden border border-white/10 my-2.5 bg-black h-40">
+                  <img
+                    src={st.image}
+                    alt={st.title}
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+
+                <p className="text-xs text-slate-300 leading-relaxed line-clamp-2">
+                  {st.desc}
+                </p>
+              </div>
+
+              <div className="mt-3 pt-3 border-t border-white/5 flex items-center justify-between text-[11px] text-teal-400 font-semibold">
+                <span>View Full Step</span>
+                <FiArrowRight />
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
