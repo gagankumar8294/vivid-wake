@@ -63,7 +63,7 @@ export default function Home() {
       step: 2,
       tag: "CHOOSE & DOWNLOAD",
       title: "Select Wallpaper & Tap 'Download'",
-      desc: "Scroll through curated drops including GTA VI Lucia Intense Portrait (7.02 MB), Sabrina Carpenter Taste (26.22 MB), or Lucia & Jason Wheelie (10.41 MB). Tap the purple 'Download' button to stream the 60fps MP4 master directly to your offline vault.",
+      desc: "Scroll through curated drops including GTA VI Jason & Lucia Vice City Duo (3.64 MB), Sabrina Carpenter Sweet but Deadly (2.07 MB), and Lucia Midnight Allure (1.69 MB). Tap the gold 'Download' button to stream the 60fps MP4 master directly to your offline vault.",
       tip: "Files are stored locally in an encrypted vault, so they play 100% offline without using your mobile data.",
       image: "/guide/store_step2_browse.png",
       caption: "Real-Time 4K Catalog with 1-Tap Download",
