@@ -2,20 +2,9 @@ import fs from "fs";
 import path from "path";
 
 export async function GET() {
-  const possiblePaths = [
-    path.join(process.cwd(), "public", "vividwake.apk"),
-    "C:\\Users\\Administrator\\Desktop\\video-lock\\VideoLockScreen\\app\\build\\outputs\\apk\\debug\\app-debug.apk"
-  ];
+  const apkPath = path.join(process.cwd(), "public", "vividwake.apk");
 
-  let apkPath: string | null = null;
-  for (const p of possiblePaths) {
-    if (fs.existsSync(p)) {
-      apkPath = p;
-      break;
-    }
-  }
-
-  if (!apkPath) {
+  if (!fs.existsSync(apkPath)) {
     return new Response("APK not found", { status: 404 });
   }
 
@@ -27,7 +16,7 @@ export async function GET() {
       fileStream.on("data", (chunk) => controller.enqueue(chunk));
       fileStream.on("end", () => controller.close());
       fileStream.on("error", (err) => controller.error(err));
-    }
+    },
   });
 
   return new Response(stream, {
@@ -35,7 +24,7 @@ export async function GET() {
       "Content-Type": "application/vnd.android.package-archive",
       "Content-Disposition": 'attachment; filename="VividWake-v1.0.apk"',
       "Content-Length": stat.size.toString(),
-      "Cache-Control": "no-cache"
-    }
+      "Cache-Control": "public, max-age=3600",
+    },
   });
 }

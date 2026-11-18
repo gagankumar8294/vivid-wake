@@ -1,0 +1,21 @@
+{
+  "name": "VividWake - 4K Dynamic Video Wallpapers for Mobile",
+  "short_name": "VividWake",
+  "description": "Next-gen 60 FPS dynamic video wallpapers for your mobile lock screen with 0% battery drain.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#06090e",
+  "theme_color": "#06090e",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
