@@ -247,9 +247,9 @@ export default function Home() {
 
       {/* Navigation Header */}
       <header className="sticky top-0 z-50 bg-[#06090e]/95 backdrop-blur-md border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 h-18 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="relative w-10 h-10 rounded-xl overflow-hidden ring-1 ring-teal-500/40 shadow-lg shadow-teal-500/20 flex items-center justify-center bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-18 flex items-center justify-between">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <div className="relative w-8 h-8 sm:w-10 sm:h-10 rounded-xl overflow-hidden ring-1 ring-teal-500/40 shadow-lg shadow-teal-500/20 flex items-center justify-center bg-slate-900 flex-shrink-0">
               <Image
                 src="/logo.png"
                 alt="VividWake Logo"
@@ -260,10 +260,10 @@ export default function Home() {
               />
             </div>
             <div>
-              <div className="text-xl font-extrabold tracking-tight text-white">
+              <div className="text-lg sm:text-xl font-extrabold tracking-tight text-white leading-tight">
                 Vivid<span className="text-teal-400">Wake</span>
               </div>
-              <div className="text-[10px] text-teal-400 font-semibold tracking-wider uppercase">
+              <div className="text-[9px] sm:text-[10px] text-teal-400 font-semibold tracking-wider uppercase">
                 Cinematic Lock Screen Engine
               </div>
             </div>
@@ -316,63 +316,64 @@ export default function Home() {
 
           <a
             href="/api/download"
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-lg shadow-emerald-600/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
+            className="inline-flex items-center gap-1.5 sm:gap-2 bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white px-3 py-2 sm:px-5 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow-lg shadow-emerald-600/30 transition-all hover:scale-[1.02] active:scale-[0.98] flex-shrink-0"
           >
-            <FiDownload className="text-lg" />
-            <span>Download APK (19.7 MB)</span>
+            <FiDownload className="text-base sm:text-lg" />
+            <span className="hidden sm:inline">Download APK (19.7 MB)</span>
+            <span className="sm:hidden">Get APK</span>
           </a>
         </div>
       </header>
 
       {/* Hero Section: VISUAL FIRST APP SHOWCASE */}
-      <section className="relative overflow-hidden pt-12 pb-16 px-6 text-center">
+      <section className="relative overflow-hidden pt-8 sm:pt-12 pb-12 sm:pb-16 px-4 sm:px-6 text-center">
         {/* Ambient Glows */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[700px] h-[350px] sm:h-[700px] bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 max-w-5xl mx-auto mb-10">
+        <div className="relative z-10 max-w-5xl mx-auto mb-8 sm:mb-10">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-teal-500/10 border border-teal-500/30 px-4 py-1.5 rounded-full text-xs font-semibold text-teal-300 mb-5">
-            <FiShield className="text-sm" />
-            <span>Verified Sideload APK • 100% Free & Safe • No Play Store Needed</span>
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-teal-500/10 border border-teal-500/30 px-3 sm:px-4 py-1.5 rounded-full text-[11px] sm:text-xs font-semibold text-teal-300 mb-4 sm:mb-5 max-w-full">
+            <FiShield className="text-xs sm:text-sm flex-shrink-0" />
+            <span className="truncate">Verified Sideload APK • 100% Free & Safe</span>
           </div>
 
           {/* Heading */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white mb-4 leading-[1.08]">
+          <h1 className="text-3xl sm:text-6xl md:text-7xl font-black tracking-tight text-white mb-3 sm:mb-4 leading-[1.12] sm:leading-[1.08]">
             Cinematic 4K Video <br className="hidden sm:inline" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-sky-300 to-amber-300">
               Lock Screens for Android
             </span>
           </h1>
 
-          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mb-8 font-normal leading-relaxed">
+          <p className="text-sm sm:text-lg text-slate-300 max-w-2xl mx-auto mb-6 sm:mb-8 font-normal leading-relaxed px-2">
             Zero wake-up delay. 0% background battery drain. Real hardware-decoded 60 FPS video lock screen engine.
           </p>
 
           {/* Action Button */}
-          <div className="flex flex-wrap items-center justify-center gap-4 mb-14">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-14 px-2 sm:px-0">
             <a
               href="/api/download"
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 text-white px-8 py-4 rounded-xl text-base font-extrabold shadow-xl shadow-emerald-600/40 hover:shadow-emerald-600/60 transition-all hover:scale-105 active:scale-95"
+              className="inline-flex items-center justify-center gap-2.5 sm:gap-3 bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl text-base font-extrabold shadow-xl shadow-emerald-600/40 hover:shadow-emerald-600/60 transition-all hover:scale-105 active:scale-95"
             >
               <FiDownload className="text-xl" />
               <span>Download VividWake APK</span>
-              <span className="text-xs font-semibold text-emerald-100 ml-1 opacity-90">v1.0.0 • 19.7 MB</span>
+              <span className="text-xs font-semibold text-emerald-100 opacity-90">19.7 MB</span>
             </a>
 
             <a
               href="#install-steps"
               onClick={(e) => scrollToSection(e, "install-steps")}
-              className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/15 text-slate-200 px-7 py-4 rounded-xl text-base font-semibold backdrop-blur-md transition-all cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/15 text-slate-200 px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl text-sm sm:text-base font-semibold backdrop-blur-md transition-all cursor-pointer"
             >
               <span>See Installation Steps</span>
-              <FiChevronDown className="text-lg text-teal-400" />
+              <FiChevronDown className="text-base sm:text-lg text-teal-400" />
             </a>
           </div>
 
           {/* TRIPLE PHONE APP INTERFACE SHOWCASE (IMAGE HEAVY) */}
-          <div className="relative flex justify-center items-end gap-3 sm:gap-6 pt-4 pb-6 max-w-4xl mx-auto">
-            {/* Phone 1: App Interface */}
+          <div className="relative flex justify-center items-end gap-2 sm:gap-6 pt-2 sm:pt-4 pb-4 sm:pb-6 max-w-4xl mx-auto px-2">
+            {/* Phone 1: App Interface (Visible on tablets/desktop) */}
             <div className="hidden sm:block w-52 md:w-60 transform -rotate-3 hover:rotate-0 transition-all duration-300 hover:scale-105 hover:z-30">
               <div className="rounded-[32px] overflow-hidden border-[5px] border-slate-800 shadow-2xl bg-black relative">
                 <img
@@ -391,20 +392,20 @@ export default function Home() {
             </div>
 
             {/* Phone 2 (Center Hero): Active Lock Screen with Lucia 4K */}
-            <div className="w-64 sm:w-72 md:w-80 transform scale-105 z-20 hover:scale-110 transition-all duration-300">
-              <div className="rounded-[36px] overflow-hidden border-[6px] border-amber-400/80 shadow-[0_20px_60px_rgba(245,158,11,0.35)] bg-black relative">
+            <div className="w-56 xs:w-64 sm:w-72 md:w-80 transform sm:scale-105 z-20 hover:scale-105 transition-all duration-300 mx-auto">
+              <div className="rounded-[28px] sm:rounded-[36px] overflow-hidden border-[4px] sm:border-[6px] border-amber-400/80 shadow-[0_15px_45px_rgba(245,158,11,0.35)] bg-black relative">
                 <img
                   src="/guide/step5_lockscreen_lucia.png"
                   alt="Lucia GTA VI Live Lock Screen"
                   className="w-full h-auto block"
                 />
-                <div className="absolute top-4 left-4 bg-gradient-to-r from-amber-500 to-amber-600 text-black px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider shadow-md flex items-center gap-1">
+                <div className="absolute top-3 sm:top-4 left-3 sm:left-4 bg-gradient-to-r from-amber-500 to-amber-600 text-black px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-[11px] font-black uppercase tracking-wider shadow-md flex items-center gap-1">
                   <FiAward className="text-black text-xs" />
                   <span>Active Lock Screen</span>
                 </div>
               </div>
-              <div className="mt-3 text-sm text-amber-300 font-extrabold flex items-center justify-center gap-1.5">
-                <FiZap className="text-amber-400 text-base" />
+              <div className="mt-2.5 sm:mt-3 text-xs sm:text-sm text-amber-300 font-extrabold flex items-center justify-center gap-1.5">
+                <FiZap className="text-amber-400 text-sm sm:text-base" />
                 <span>GTA VI Lucia 4K 60FPS</span>
               </div>
             </div>
@@ -431,24 +432,24 @@ export default function Home() {
       </section>
 
       {/* SECTION: BEFORE vs AFTER COMPARISON */}
-      <section id="before-after" className="max-w-6xl mx-auto px-6 py-16">
-        <div className="bg-slate-900/60 border border-white/10 rounded-3xl p-8 md:p-12 backdrop-blur-md">
-          <div className="text-center mb-10">
+      <section id="before-after" className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="bg-slate-900/60 border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 backdrop-blur-md">
+          <div className="text-center mb-8 sm:mb-10">
             <div className="text-xs font-bold tracking-widest text-teal-400 uppercase mb-2">
               Transform Your Phone
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white tracking-tight">
               Before vs After VividWake
             </h2>
-            <p className="text-slate-400 text-sm md:text-base max-w-xl mx-auto mt-2">
+            <p className="text-slate-400 text-xs sm:text-base max-w-xl mx-auto mt-2 px-2">
               See the immediate visual upgrade from dull static wallpapers to hardware-accelerated 60 FPS video loops.
             </p>
 
             {/* Choose After Wallpaper */}
-            <div className="flex justify-center gap-3 mt-6">
+            <div className="flex flex-col sm:flex-row justify-center gap-2 sm:gap-3 mt-5 sm:mt-6">
               <button
                 onClick={() => setBeforeAfterChoice("lucia")}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                   beforeAfterChoice === "lucia"
                     ? "bg-amber-500 text-black shadow-lg shadow-amber-500/20"
                     : "bg-slate-800 text-slate-300 hover:bg-slate-700"
@@ -458,7 +459,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => setBeforeAfterChoice("sabrina")}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                   beforeAfterChoice === "sabrina"
                     ? "bg-rose-500 text-white shadow-lg shadow-rose-500/20"
                     : "bg-slate-800 text-slate-300 hover:bg-slate-700"
@@ -470,21 +471,21 @@ export default function Home() {
           </div>
 
           {/* Side-by-Side Comparison Container */}
-          <div className="grid md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 items-center max-w-4xl mx-auto">
             {/* BEFORE CARD */}
-            <div className="bg-black/60 border border-rose-500/30 rounded-3xl p-6 text-center">
-              <div className="inline-flex items-center gap-1.5 bg-rose-500/20 text-rose-300 border border-rose-500/40 px-3 py-1 rounded-full text-xs font-extrabold mb-4">
-                <FiXCircle className="text-rose-400 text-sm" />
+            <div className="bg-black/60 border border-rose-500/30 rounded-2xl sm:rounded-3xl p-5 sm:p-6 text-center">
+              <div className="inline-flex items-center gap-1.5 bg-rose-500/20 text-rose-300 border border-rose-500/40 px-3 py-1 rounded-full text-[11px] sm:text-xs font-extrabold mb-3 sm:mb-4">
+                <FiXCircle className="text-rose-400 text-xs sm:text-sm" />
                 <span>BEFORE VIVIDWAKE</span>
               </div>
-              <div className="text-base font-bold text-white mb-2">
+              <div className="text-sm sm:text-base font-bold text-white mb-1.5 sm:mb-2">
                 Boring Static Lock Screen
               </div>
-              <p className="text-xs text-slate-400 mb-5">
+              <p className="text-xs text-slate-400 mb-4 sm:mb-5">
                 Standard flat Android wallpaper. 0 motion, 0 aesthetic, lifeless display.
               </p>
 
-              <div className="w-56 sm:w-64 mx-auto rounded-[32px] overflow-hidden border-4 border-slate-700 shadow-2xl bg-black">
+              <div className="w-48 sm:w-64 mx-auto rounded-[24px] sm:rounded-[32px] overflow-hidden border-3 sm:border-4 border-slate-700 shadow-2xl bg-black">
                 <img
                   src="/guide/before_default_lockscreen.png"
                   alt="Before: Default Static Lock Screen"
@@ -505,19 +506,19 @@ export default function Home() {
             </div>
 
             {/* AFTER CARD */}
-            <div className="bg-black/60 border border-emerald-500/40 rounded-3xl p-6 text-center shadow-[0_0_50px_rgba(16,185,129,0.15)]">
-              <div className="inline-flex items-center gap-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-3 py-1 rounded-full text-xs font-extrabold mb-4">
-                <FiZap className="text-emerald-400 text-sm" />
+            <div className="bg-black/60 border border-emerald-500/40 rounded-2xl sm:rounded-3xl p-5 sm:p-6 text-center shadow-[0_0_50px_rgba(16,185,129,0.15)]">
+              <div className="inline-flex items-center gap-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-3 py-1 rounded-full text-[11px] sm:text-xs font-extrabold mb-3 sm:mb-4">
+                <FiZap className="text-emerald-400 text-xs sm:text-sm" />
                 <span>AFTER VIVIDWAKE</span>
               </div>
-              <div className="text-base font-bold text-white mb-2">
+              <div className="text-sm sm:text-base font-bold text-white mb-1.5 sm:mb-2">
                 Cinematic 4K 60FPS Video Loop
               </div>
-              <p className="text-xs text-slate-400 mb-5">
+              <p className="text-xs text-slate-400 mb-4 sm:mb-5">
                 Hypnotic live motion the millisecond you press the power button with 0% battery drain!
               </p>
 
-              <div className="w-56 sm:w-64 mx-auto rounded-[32px] overflow-hidden border-4 border-emerald-400 shadow-2xl shadow-emerald-500/30 bg-black">
+              <div className="w-48 sm:w-64 mx-auto rounded-[24px] sm:rounded-[32px] overflow-hidden border-3 sm:border-4 border-emerald-400 shadow-2xl shadow-emerald-500/30 bg-black">
                 <img
                   src={
                     beforeAfterChoice === "lucia"
@@ -545,21 +546,21 @@ export default function Home() {
       </section>
 
       {/* SECTION: STEP-BY-STEP INSTALLATION & APP ONBOARDING (IMAGE HEAVY) */}
-      <section id="install-steps" className="max-w-6xl mx-auto px-6 py-16">
-        <div className="text-center mb-12">
+      <section id="install-steps" className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="text-center mb-8 sm:mb-12">
           <div className="text-xs font-bold tracking-widest text-teal-400 uppercase mb-2">
             Step-By-Step Visual Guide
           </div>
-          <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white tracking-tight">
             How To Install & Apply in 60 Seconds
           </h2>
-          <p className="text-slate-400 text-sm md:text-base max-w-xl mx-auto mt-2">
+          <p className="text-slate-400 text-xs sm:text-base max-w-xl mx-auto mt-2 px-2">
             Follow each visual step below. Tested and captured directly from Android 15.
           </p>
         </div>
 
         {/* 5 Sequential Step Cards with Visual Smartphone Mockups */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5">
           {/* Step 1: Chrome Warning */}
           <div className="bg-slate-900/60 border border-amber-500/30 rounded-2xl p-4 flex flex-col justify-between">
             <div>
@@ -704,29 +705,29 @@ export default function Home() {
       </section>
 
       {/* SECTION: HOW TO DOWNLOAD & SETUP FROM EXPLORE STORE (START FROM START) */}
-      <section id="store-walkthrough" className="max-w-6xl mx-auto px-6 py-20 border-t border-white/5">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-teal-500/10 border border-teal-500/30 px-3.5 py-1.5 rounded-full text-xs font-bold text-teal-300 mb-4">
-            <FiShoppingBag className="text-sm" />
-            <span>START FROM START • EXPLORE STORE & SETUP GUIDE</span>
+      <section id="store-walkthrough" className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-20 border-t border-white/5">
+        <div className="text-center mb-8 sm:mb-12">
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-teal-500/10 border border-teal-500/30 px-3 sm:px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-bold text-teal-300 mb-3 sm:mb-4 max-w-full">
+            <FiShoppingBag className="text-xs sm:text-sm flex-shrink-0" />
+            <span className="truncate">START FROM START • EXPLORE STORE GUIDE</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white tracking-tight">
             How to Download & Apply From Explore Store
           </h2>
-          <p className="text-slate-400 text-sm md:text-base max-w-2xl mx-auto mt-3">
+          <p className="text-slate-400 text-xs sm:text-base max-w-2xl mx-auto mt-2 sm:mt-3 px-2">
             Never get lost. Follow each step below captured live from Android 15 to browse, stream, and set your 4K 60FPS lock screen wallpaper in seconds.
           </p>
         </div>
 
         {/* Step Selector Tabs (Interactive 6-step nav) */}
-        <div className="flex justify-center gap-2 mb-10 overflow-x-auto pb-2 scrollbar-none">
+        <div className="flex justify-start sm:justify-center gap-2 mb-6 sm:mb-10 overflow-x-auto pb-2 scrollbar-none px-1">
           {storeSteps.map((st, idx) => {
             const isActive = activeStoreStep === idx;
             return (
               <button
                 key={st.step}
                 onClick={() => setActiveStoreStep(idx)}
-                className={`px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 whitespace-nowrap cursor-pointer ${
+                className={`px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 sm:gap-2 whitespace-nowrap cursor-pointer flex-shrink-0 ${
                   isActive
                     ? "bg-teal-500/20 text-teal-300 border border-teal-500/60 shadow-lg shadow-teal-500/10"
                     : "bg-slate-900/60 text-slate-400 border border-white/5 hover:bg-slate-800"
@@ -744,31 +745,31 @@ export default function Home() {
         </div>
 
         {/* Highlighted Step Feature Card (Side by Side Walkthrough) */}
-        <div className="bg-slate-900/60 border border-teal-500/20 rounded-3xl p-6 md:p-10 backdrop-blur-md mb-12 relative overflow-hidden">
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="bg-slate-900/60 border border-teal-500/20 rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-10 backdrop-blur-md mb-8 sm:mb-12 relative overflow-hidden">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
             {/* Step Explanation Column */}
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="bg-teal-500 text-black px-2.5 py-0.5 rounded-md text-xs font-extrabold">
+              <div className="flex items-center gap-2 mb-3 sm:mb-4">
+                <span className="bg-teal-500 text-black px-2 sm:px-2.5 py-0.5 rounded-md text-[11px] sm:text-xs font-extrabold">
                   STEP {storeSteps[activeStoreStep].step} OF {storeSteps.length}
                 </span>
-                <span className="text-xs font-bold text-teal-400 uppercase tracking-wider">
+                <span className="text-[11px] sm:text-xs font-bold text-teal-400 uppercase tracking-wider">
                   {storeSteps[activeStoreStep].tag}
                 </span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-4">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white mb-3 sm:mb-4">
                 {storeSteps[activeStoreStep].title}
               </h3>
 
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+              <p className="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed mb-4 sm:mb-6">
                 {storeSteps[activeStoreStep].desc}
               </p>
 
               {/* Pro Tip Box */}
-              <div className="bg-black/40 border border-white/10 rounded-2xl p-4 mb-8">
-                <div className="flex items-start gap-2.5">
-                  <FiCheck className="text-emerald-400 text-lg flex-shrink-0 mt-0.5" />
+              <div className="bg-black/40 border border-white/10 rounded-xl sm:rounded-2xl p-3.5 sm:p-4 mb-6 sm:mb-8">
+                <div className="flex items-start gap-2 sm:gap-2.5">
+                  <FiCheck className="text-emerald-400 text-base sm:text-lg flex-shrink-0 mt-0.5" />
                   <div className="text-xs text-slate-300 leading-normal">
                     <strong className="text-emerald-300">How It Works: </strong>
                     {storeSteps[activeStoreStep].tip}
@@ -777,23 +778,23 @@ export default function Home() {
               </div>
 
               {/* Navigation buttons between steps */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2.5 sm:gap-3 mb-6 md:mb-0">
                 <button
                   disabled={activeStoreStep === 0}
                   onClick={() => setActiveStoreStep((p) => Math.max(0, p - 1))}
-                  className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                  className={`flex-1 sm:flex-initial px-3.5 sm:px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
                     activeStoreStep === 0
                       ? "bg-slate-800/40 text-slate-600 border border-white/5 cursor-not-allowed"
                       : "bg-slate-800 text-slate-200 border border-white/10 hover:bg-slate-700 cursor-pointer"
                   }`}
                 >
                   <FiChevronLeft />
-                  <span>Previous Step</span>
+                  <span>Prev</span>
                 </button>
 
                 <button
                   onClick={() => setActiveStoreStep((p) => (p + 1) % storeSteps.length)}
-                  className="px-5 py-2.5 rounded-xl text-xs font-bold bg-teal-500 hover:bg-teal-400 text-black flex items-center gap-1.5 shadow-md shadow-teal-500/20 transition-all cursor-pointer"
+                  className="flex-1 sm:flex-initial px-4 sm:px-5 py-2.5 rounded-xl text-xs font-bold bg-teal-500 hover:bg-teal-400 text-black flex items-center justify-center gap-1.5 shadow-md shadow-teal-500/20 transition-all cursor-pointer"
                 >
                   <span>{activeStoreStep === storeSteps.length - 1 ? "Start Over" : "Next Step"}</span>
                   <FiArrowRight />
@@ -803,15 +804,15 @@ export default function Home() {
 
             {/* Step Smartphone Screenshot Preview */}
             <div className="flex flex-col items-center justify-center">
-              <div className="w-64 sm:w-72 rounded-[36px] overflow-hidden border-[5px] border-slate-700 shadow-2xl shadow-teal-500/10 bg-black">
+              <div className="w-52 sm:w-64 md:w-72 rounded-[28px] sm:rounded-[36px] overflow-hidden border-[4px] sm:border-[5px] border-slate-700 shadow-2xl shadow-teal-500/10 bg-black">
                 <img
                   src={storeSteps[activeStoreStep].image}
                   alt={storeSteps[activeStoreStep].caption}
                   className="w-full h-auto block"
                 />
               </div>
-              <div className="mt-3 text-xs text-slate-400 font-semibold flex items-center gap-1.5">
-                <FiCamera className="text-teal-400" />
+              <div className="mt-2.5 sm:mt-3 text-xs text-slate-400 font-semibold flex items-center gap-1.5 text-center">
+                <FiCamera className="text-teal-400 flex-shrink-0" />
                 <span>{storeSteps[activeStoreStep].caption}</span>
               </div>
             </div>
@@ -819,7 +820,7 @@ export default function Home() {
         </div>
 
         {/* 6 Visual Cards Grid (All Steps at a Glance) */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {storeSteps.map((st, idx) => (
             <div
               key={st.step}
@@ -867,21 +868,21 @@ export default function Home() {
       </section>
 
       {/* SECTION: FEATURED WALLPAPERS SHOWCASE (AUTO-PLAYING CAROUSEL) */}
-      <section id="showcase" className="max-w-6xl mx-auto px-6 py-16">
-        <div className="text-center mb-10">
+      <section id="showcase" className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="text-center mb-8 sm:mb-10">
           <div className="text-xs font-bold tracking-widest text-teal-400 uppercase mb-2">
             Curated 4K Drops
           </div>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
             Featured 60 FPS Video Wallpapers
           </h2>
-          <p className="text-slate-400 text-sm md:text-base max-w-xl mx-auto mt-2">
+          <p className="text-slate-400 text-xs sm:text-base max-w-xl mx-auto mt-2 px-2">
             Captured live on physical Android devices running VividWake. Cycles automatically or click any card to inspect.
           </p>
         </div>
 
         {/* 3 Interactive Cards / Carousel Selectors */}
-        <div className="grid sm:grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
           {/* Card 1: Lucia Editorial Portrait */}
           <button
             onClick={() => setActiveWallpaperTab("lucia")}
@@ -1045,70 +1046,70 @@ export default function Home() {
 
           {/* Tab 1: Lucia Portrait */}
           {activeWallpaperTab === "lucia" && (
-            <div className="grid md:grid-cols-2 gap-10 items-center bg-slate-900/50 border border-amber-500/20 rounded-3xl p-8 md:p-12 backdrop-blur-md transition-all duration-300">
+            <div className="grid md:grid-cols-2 gap-6 sm:gap-10 items-center bg-slate-900/50 border border-amber-500/20 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 backdrop-blur-md transition-all duration-300">
               <div>
-                <div className="inline-block bg-amber-500/15 text-amber-300 border border-amber-500/30 px-3 py-1 rounded-full text-xs font-bold mb-4">
+                <div className="inline-block bg-amber-500/15 text-amber-300 border border-amber-500/30 px-3 py-1 rounded-full text-xs font-bold mb-3 sm:mb-4">
                   VIRAL SOCIAL HIT
                 </div>
-                <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-4">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white mb-3 sm:mb-4">
                   GTA VI: Lucia Intense Editorial Portrait
                 </h3>
-                <p className="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
+                <p className="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed mb-4 sm:mb-6">
                   The viral hyper-realistic portrait of GTA VI's Lucia. Featuring her intense hazel gaze, layered brunette hair, layered diamond necklaces, and atmospheric falling embers. Smoothly looping at 60 FPS in 1080×1920.
                 </p>
 
-                <div className="grid grid-cols-2 gap-3 mb-8">
-                  <div className="bg-black/30 p-3 rounded-xl border border-white/5">
-                    <div className="text-[11px] text-slate-400">Resolution</div>
-                    <div className="text-sm font-bold text-white">1080 × 1920 Full HD</div>
+                <div className="grid grid-cols-2 gap-2.5 sm:gap-3 mb-6 sm:mb-8">
+                  <div className="bg-black/30 p-2.5 sm:p-3 rounded-xl border border-white/5">
+                    <div className="text-[10px] sm:text-[11px] text-slate-400">Resolution</div>
+                    <div className="text-xs sm:text-sm font-bold text-white">1080 × 1920 Full HD</div>
                   </div>
-                  <div className="bg-black/30 p-3 rounded-xl border border-white/5">
-                    <div className="text-[11px] text-slate-400">File Size</div>
-                    <div className="text-sm font-bold text-white">7.02 MB (Optimized)</div>
+                  <div className="bg-black/30 p-2.5 sm:p-3 rounded-xl border border-white/5">
+                    <div className="text-[10px] sm:text-[11px] text-slate-400">File Size</div>
+                    <div className="text-xs sm:text-sm font-bold text-white">7.02 MB (Optimized)</div>
                   </div>
-                  <div className="bg-black/30 p-3 rounded-xl border border-white/5">
-                    <div className="text-[11px] text-slate-400">Framerate</div>
-                    <div className="text-sm font-bold text-teal-300">60 FPS Native Loop</div>
+                  <div className="bg-black/30 p-2.5 sm:p-3 rounded-xl border border-white/5">
+                    <div className="text-[10px] sm:text-[11px] text-slate-400">Framerate</div>
+                    <div className="text-xs sm:text-sm font-bold text-teal-300">60 FPS Native Loop</div>
                   </div>
-                  <div className="bg-black/30 p-3 rounded-xl border border-white/5">
-                    <div className="text-[11px] text-slate-400">Apply Speed</div>
-                    <div className="text-sm font-bold text-amber-300">1-Tap Direct Apply</div>
+                  <div className="bg-black/30 p-2.5 sm:p-3 rounded-xl border border-white/5">
+                    <div className="text-[10px] sm:text-[11px] text-slate-400">Apply Speed</div>
+                    <div className="text-xs sm:text-sm font-bold text-amber-300">1-Tap Direct Apply</div>
                   </div>
                 </div>
 
                 <a
                   href="/api/download"
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black px-6 py-3 rounded-xl text-sm font-extrabold shadow-lg shadow-amber-500/20 transition-transform hover:scale-105 active:scale-95"
+                  className="inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black px-6 py-3 rounded-xl text-sm font-extrabold shadow-lg shadow-amber-500/20 transition-transform hover:scale-105 active:scale-95 mb-6 md:mb-0"
                 >
                   <FiDownload />
                   <span>Get App & Set Lucia As Lock Screen</span>
                 </a>
               </div>
 
-              <div className="flex justify-center gap-4 flex-wrap">
+              <div className="flex justify-center gap-3 sm:gap-4 flex-wrap">
                 <div className="text-center">
-                  <div className="w-56 rounded-3xl overflow-hidden border-4 border-slate-800 shadow-2xl shadow-amber-500/20 bg-black">
+                  <div className="w-48 sm:w-56 rounded-2xl sm:rounded-3xl overflow-hidden border-3 sm:border-4 border-slate-800 shadow-2xl shadow-amber-500/20 bg-black">
                     <img
                       src="/guide/step5_lockscreen_lucia.png"
                       alt="Lucia Lock Screen Live on Device"
                       className="w-full h-auto block"
                     />
                   </div>
-                  <div className="mt-2.5 text-xs text-amber-300 font-bold flex items-center justify-center gap-1.5">
+                  <div className="mt-2 text-[11px] sm:text-xs text-amber-300 font-bold flex items-center justify-center gap-1.5">
                     <FiCamera className="text-amber-400" />
                     <span>Real Motorola g64 Lock Screen</span>
                   </div>
                 </div>
 
                 <div className="text-center">
-                  <div className="w-56 rounded-3xl overflow-hidden border-4 border-slate-800 shadow-xl bg-black">
+                  <div className="w-48 sm:w-56 rounded-2xl sm:rounded-3xl overflow-hidden border-3 sm:border-4 border-slate-800 shadow-xl bg-black">
                     <img
                       src="/guide/lucia_portrait.jpg"
                       alt="Lucia Portrait Source"
                       className="w-full h-auto block"
                     />
                   </div>
-                  <div className="mt-2.5 text-xs text-slate-400 font-medium flex items-center justify-center gap-1.5">
+                  <div className="mt-2 text-[11px] sm:text-xs text-slate-400 font-medium flex items-center justify-center gap-1.5">
                     <FiImage className="text-slate-400" />
                     <span>4K Portrait Source Master</span>
                   </div>
@@ -1119,70 +1120,70 @@ export default function Home() {
 
           {/* Tab 2: Sabrina Carpenter */}
           {activeWallpaperTab === "sabrina" && (
-            <div className="grid md:grid-cols-2 gap-10 items-center bg-slate-900/50 border border-rose-500/20 rounded-3xl p-8 md:p-12 backdrop-blur-md transition-all duration-300">
+            <div className="grid md:grid-cols-2 gap-6 sm:gap-10 items-center bg-slate-900/50 border border-rose-500/20 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 backdrop-blur-md transition-all duration-300">
               <div>
-                <div className="inline-block bg-rose-500/15 text-rose-300 border border-rose-500/30 px-3 py-1 rounded-full text-xs font-bold mb-4">
+                <div className="inline-block bg-rose-500/15 text-rose-300 border border-rose-500/30 px-3 py-1 rounded-full text-xs font-bold mb-3 sm:mb-4">
                   VIRAL TIKTOK HIT • 60 FPS
                 </div>
-                <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-4">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white mb-3 sm:mb-4">
                   Sabrina Carpenter: Taste Kiss Scene
                 </h3>
-                <p className="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
+                <p className="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed mb-4 sm:mb-6">
                   The full viral 1080×1920 60fps video wallpaper of Sabrina Carpenter from the acclaimed 'Taste' music video. Seamless looping video with perfect portrait crop on your Android phone lock screen.
                 </p>
 
-                <div className="grid grid-cols-2 gap-3 mb-8">
-                  <div className="bg-black/30 p-3 rounded-xl border border-white/5">
-                    <div className="text-[11px] text-slate-400">Clip Duration</div>
-                    <div className="text-sm font-bold text-white">15 Seconds Full Scene</div>
+                <div className="grid grid-cols-2 gap-2.5 sm:gap-3 mb-6 sm:mb-8">
+                  <div className="bg-black/30 p-2.5 sm:p-3 rounded-xl border border-white/5">
+                    <div className="text-[10px] sm:text-[11px] text-slate-400">Clip Duration</div>
+                    <div className="text-xs sm:text-sm font-bold text-white">15 Seconds Full Scene</div>
                   </div>
-                  <div className="bg-black/30 p-3 rounded-xl border border-white/5">
-                    <div className="text-[11px] text-slate-400">Master Video</div>
-                    <div className="text-sm font-bold text-white">26.22 MB Ultra HD</div>
+                  <div className="bg-black/30 p-2.5 sm:p-3 rounded-xl border border-white/5">
+                    <div className="text-[10px] sm:text-[11px] text-slate-400">Master Video</div>
+                    <div className="text-xs sm:text-sm font-bold text-white">26.22 MB Ultra HD</div>
                   </div>
-                  <div className="bg-black/30 p-3 rounded-xl border border-white/5">
-                    <div className="text-[11px] text-slate-400">Framerate</div>
-                    <div className="text-sm font-bold text-rose-300">60 FPS Seamless Loop</div>
+                  <div className="bg-black/30 p-2.5 sm:p-3 rounded-xl border border-white/5">
+                    <div className="text-[10px] sm:text-[11px] text-slate-400">Framerate</div>
+                    <div className="text-xs sm:text-sm font-bold text-rose-300">60 FPS Seamless Loop</div>
                   </div>
-                  <div className="bg-black/30 p-3 rounded-xl border border-white/5">
-                    <div className="text-[11px] text-slate-400">Engine Status</div>
-                    <div className="text-sm font-bold text-teal-300">Active in My Wallpapers</div>
+                  <div className="bg-black/30 p-2.5 sm:p-3 rounded-xl border border-white/5">
+                    <div className="text-[10px] sm:text-[11px] text-slate-400">Engine Status</div>
+                    <div className="text-xs sm:text-sm font-bold text-teal-300">Active in My Wallpapers</div>
                   </div>
                 </div>
 
                 <a
                   href="/api/download"
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-600 to-rose-500 hover:from-rose-500 hover:to-rose-400 text-white px-6 py-3 rounded-xl text-sm font-extrabold shadow-lg shadow-rose-500/20 transition-transform hover:scale-105 active:scale-95"
+                  className="inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-gradient-to-r from-rose-600 to-rose-500 hover:from-rose-500 hover:to-rose-400 text-white px-6 py-3 rounded-xl text-sm font-extrabold shadow-lg shadow-rose-500/20 transition-transform hover:scale-105 active:scale-95 mb-6 md:mb-0"
                 >
                   <FiDownload />
                   <span>Download App & Apply Sabrina Wallpaper</span>
                 </a>
               </div>
 
-              <div className="flex justify-center gap-4 flex-wrap">
+              <div className="flex justify-center gap-3 sm:gap-4 flex-wrap">
                 <div className="text-center">
-                  <div className="w-56 rounded-3xl overflow-hidden border-4 border-slate-800 shadow-2xl shadow-rose-500/20 bg-black">
+                  <div className="w-48 sm:w-56 rounded-2xl sm:rounded-3xl overflow-hidden border-3 sm:border-4 border-slate-800 shadow-2xl shadow-rose-500/20 bg-black">
                     <img
                       src="/guide/step4_lockscreen_sabrina.png"
                       alt="Sabrina Carpenter Lock Screen Live"
                       className="w-full h-auto block"
                     />
                   </div>
-                  <div className="mt-2.5 text-xs text-rose-300 font-bold flex items-center justify-center gap-1.5">
+                  <div className="mt-2 text-[11px] sm:text-xs text-rose-300 font-bold flex items-center justify-center gap-1.5">
                     <FiCamera className="text-rose-400" />
                     <span>Real Lock Screen Live Playback</span>
                   </div>
                 </div>
 
                 <div className="text-center">
-                  <div className="w-56 rounded-3xl overflow-hidden border-4 border-slate-800 shadow-xl bg-black">
+                  <div className="w-48 sm:w-56 rounded-2xl sm:rounded-3xl overflow-hidden border-3 sm:border-4 border-slate-800 shadow-xl bg-black">
                     <img
                       src="/guide/step1_my_wallpapers.png"
                       alt="Sabrina in My Wallpapers Tab"
                       className="w-full h-auto block"
                     />
                   </div>
-                  <div className="mt-2.5 text-xs text-slate-400 font-medium flex items-center justify-center gap-1.5">
+                  <div className="mt-2 text-[11px] sm:text-xs text-slate-400 font-medium flex items-center justify-center gap-1.5">
                     <FiSmartphone className="text-slate-400" />
                     <span>VividWake App Manager</span>
                   </div>
@@ -1193,40 +1194,40 @@ export default function Home() {
 
           {/* Tab 3: Lucia Wheelie */}
           {activeWallpaperTab === "wheelie" && (
-            <div className="grid md:grid-cols-2 gap-10 items-center bg-slate-900/50 border border-sky-500/20 rounded-3xl p-8 md:p-12 backdrop-blur-md transition-all duration-300">
+            <div className="grid md:grid-cols-2 gap-6 sm:gap-10 items-center bg-slate-900/50 border border-sky-500/20 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 backdrop-blur-md transition-all duration-300">
               <div>
-                <div className="inline-block bg-sky-500/15 text-sky-300 border border-sky-500/30 px-3 py-1 rounded-full text-xs font-bold mb-4">
+                <div className="inline-block bg-sky-500/15 text-sky-300 border border-sky-500/30 px-3 py-1 rounded-full text-xs font-bold mb-3 sm:mb-4">
                   GTA VI ACTION • 60 FPS
                 </div>
-                <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-4">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white mb-3 sm:mb-4">
                   Lucia & Jason: Vice City Highway Wheelie
                 </h3>
-                <p className="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
+                <p className="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed mb-4 sm:mb-6">
                   High-speed action sequence featuring Lucia riding pillion on a motorcycle wheelie across the sun-drenched neon streets of Vice City. Optimized for flawless looping.
                 </p>
 
-                <div className="grid grid-cols-2 gap-3 mb-8">
-                  <div className="bg-black/30 p-3 rounded-xl border border-white/5">
-                    <div className="text-[11px] text-slate-400">Scene Type</div>
-                    <div className="text-sm font-bold text-white">Cinematic Action</div>
+                <div className="grid grid-cols-2 gap-2.5 sm:gap-3 mb-6 sm:mb-8">
+                  <div className="bg-black/30 p-2.5 sm:p-3 rounded-xl border border-white/5">
+                    <div className="text-[10px] sm:text-[11px] text-slate-400">Scene Type</div>
+                    <div className="text-xs sm:text-sm font-bold text-white">Cinematic Action</div>
                   </div>
-                  <div className="bg-black/30 p-3 rounded-xl border border-white/5">
-                    <div className="text-[11px] text-slate-400">File Size</div>
-                    <div className="text-sm font-bold text-white">8.16 MB Compressed</div>
+                  <div className="bg-black/30 p-2.5 sm:p-3 rounded-xl border border-white/5">
+                    <div className="text-[10px] sm:text-[11px] text-slate-400">File Size</div>
+                    <div className="text-xs sm:text-sm font-bold text-white">8.16 MB Compressed</div>
                   </div>
-                  <div className="bg-black/30 p-3 rounded-xl border border-white/5">
-                    <div className="text-[11px] text-slate-400">Audio Loop</div>
-                    <div className="text-sm font-bold text-sky-300">Silent Seamless</div>
+                  <div className="bg-black/30 p-2.5 sm:p-3 rounded-xl border border-white/5">
+                    <div className="text-[10px] sm:text-[11px] text-slate-400">Audio Loop</div>
+                    <div className="text-xs sm:text-sm font-bold text-sky-300">Silent Seamless</div>
                   </div>
-                  <div className="bg-black/30 p-3 rounded-xl border border-white/5">
-                    <div className="text-[11px] text-slate-400">Category</div>
-                    <div className="text-sm font-bold text-teal-300">Gaming / Vice City</div>
+                  <div className="bg-black/30 p-2.5 sm:p-3 rounded-xl border border-white/5">
+                    <div className="text-[10px] sm:text-[11px] text-slate-400">Category</div>
+                    <div className="text-xs sm:text-sm font-bold text-teal-300">Gaming / Vice City</div>
                   </div>
                 </div>
 
                 <a
                   href="/api/download"
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 text-black px-6 py-3 rounded-xl text-sm font-extrabold shadow-lg shadow-sky-500/20 transition-transform hover:scale-105 active:scale-95"
+                  className="inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 text-black px-6 py-3 rounded-xl text-sm font-extrabold shadow-lg shadow-sky-500/20 transition-transform hover:scale-105 active:scale-95 mb-6 md:mb-0"
                 >
                   <FiDownload />
                   <span>Download VividWake to Apply</span>
@@ -1235,14 +1236,14 @@ export default function Home() {
 
               <div className="flex justify-center">
                 <div className="text-center">
-                  <div className="w-64 rounded-3xl overflow-hidden border-4 border-slate-800 shadow-2xl shadow-sky-500/20 bg-black">
+                  <div className="w-52 sm:w-64 rounded-2xl sm:rounded-3xl overflow-hidden border-3 sm:border-4 border-slate-800 shadow-2xl shadow-sky-500/20 bg-black">
                     <img
                       src="/guide/lucia_wheelie.jpg"
                       alt="Lucia Motorcycle Wheelie"
                       className="w-full h-auto block"
                     />
                   </div>
-                  <div className="mt-2.5 text-xs text-sky-300 font-bold flex items-center justify-center gap-1.5">
+                  <div className="mt-2 text-[11px] sm:text-xs text-sky-300 font-bold flex items-center justify-center gap-1.5">
                     <FiPlay className="text-sky-400" />
                     <span>Vice City Wheelie Preview</span>
                   </div>
@@ -1270,28 +1271,28 @@ export default function Home() {
       </section>
 
       {/* OEM Specific Brand Guide */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
-        <div className="text-center mb-10">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="text-center mb-8 sm:mb-10">
           <div className="text-xs font-bold tracking-widest text-teal-400 uppercase mb-2">
             Device Optimization
           </div>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
             Optimized For Every Phone Brand
           </h2>
-          <p className="text-slate-400 text-sm md:text-base max-w-xl mx-auto mt-2">
+          <p className="text-slate-400 text-xs sm:text-base max-w-xl mx-auto mt-2 px-2">
             Select your phone manufacturer below for exact OEM settings and battery bypass instructions:
           </p>
         </div>
 
         {/* Brand Selector Buttons */}
-        <div className="flex justify-center gap-2 mb-8 flex-wrap">
+        <div className="flex justify-start sm:justify-center gap-1.5 sm:gap-2 mb-6 sm:mb-8 overflow-x-auto pb-2 scrollbar-none px-1">
           {(["motorola", "samsung", "xiaomi", "oneplus", "pixel"] as const).map((key) => {
             const isSel = activeOemTab === key;
             return (
               <button
                 key={key}
                 onClick={() => setActiveOemTab(key)}
-                className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
+                className={`px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap flex-shrink-0 ${
                   isSel
                     ? "bg-teal-500/20 text-teal-300 border border-teal-500/50 shadow-md shadow-teal-500/10"
                     : "bg-slate-900/60 text-slate-400 border border-white/5 hover:bg-slate-800"
@@ -1305,15 +1306,15 @@ export default function Home() {
         </div>
 
         {/* Selected OEM Content */}
-        <div className="max-w-2xl mx-auto bg-slate-900/70 border border-teal-500/20 rounded-2xl p-6 md:p-8 backdrop-blur-md">
-          <h4 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+        <div className="max-w-2xl mx-auto bg-slate-900/70 border border-teal-500/20 rounded-2xl p-5 sm:p-6 md:p-8 backdrop-blur-md">
+          <h4 className="text-base sm:text-lg font-bold text-white mb-3.5 sm:mb-4 flex items-center gap-2">
             <span>{oemGuides[activeOemTab].icon}</span>
             <span>{oemGuides[activeOemTab].brand}</span>
           </h4>
           <div className="space-y-3">
             {oemGuides[activeOemTab].steps.map((st, idx) => (
-              <div key={idx} className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-teal-500/15 text-teal-300 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
+              <div key={idx} className="flex items-start gap-2.5 sm:gap-3">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-teal-500/15 text-teal-300 flex items-center justify-center text-[11px] sm:text-xs font-bold flex-shrink-0 mt-0.5">
                   {idx + 1}
                 </div>
                 <div className="text-xs sm:text-sm text-slate-300 leading-relaxed">
@@ -1326,96 +1327,96 @@ export default function Home() {
       </section>
 
       {/* Under The Hood / Battery Tech Table */}
-      <section id="tech-specs" className="max-w-6xl mx-auto px-6 py-16">
-        <div className="bg-slate-900/50 border border-white/10 rounded-3xl p-8 md:p-12 backdrop-blur-md">
-          <div className="text-center mb-10">
+      <section id="tech-specs" className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="bg-slate-900/50 border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 backdrop-blur-md">
+          <div className="text-center mb-8 sm:mb-10">
             <div className="text-xs font-bold tracking-widest text-teal-400 uppercase mb-2">
               Performance Architecture
             </div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
               Why VividWake Beats Traditional Wallpaper Apps
             </h2>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse min-w-[600px]">
+          <div className="overflow-x-auto -mx-2 sm:mx-0 pb-2">
+            <table className="w-full text-left border-collapse min-w-[500px] sm:min-w-[600px]">
               <thead>
                 <tr className="border-b border-white/10">
-                  <th className="p-4 text-xs font-semibold text-slate-400">Feature</th>
-                  <th className="p-4 text-sm font-extrabold text-teal-300">
+                  <th className="p-3 sm:p-4 text-xs font-semibold text-slate-400">Feature</th>
+                  <th className="p-3 sm:p-4 text-xs sm:text-sm font-extrabold text-teal-300">
                     <span className="inline-flex items-center gap-1.5">
                       <FiZap className="text-teal-400" />
                       <span>VividWake Engine</span>
                     </span>
                   </th>
-                  <th className="p-4 text-xs font-semibold text-slate-500">Traditional Live Wallpapers</th>
+                  <th className="p-3 sm:p-4 text-xs font-semibold text-slate-500">Traditional Live Wallpapers</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5 text-xs sm:text-sm">
                 <tr>
-                  <td className="p-4 text-slate-200 font-medium">Background Battery Drain</td>
-                  <td className="p-4 text-emerald-400 font-bold">
+                  <td className="p-3 sm:p-4 text-slate-200 font-medium">Background Battery Drain</td>
+                  <td className="p-3 sm:p-4 text-emerald-400 font-bold">
                     <span className="inline-flex items-center gap-1.5">
-                      <FiCheck className="text-emerald-400" />
-                      <span>0.0% (Decoder & Surface paused)</span>
+                      <FiCheck className="text-emerald-400 flex-shrink-0" />
+                      <span>0.0% (Decoder paused)</span>
                     </span>
                   </td>
-                  <td className="p-4 text-rose-400">
+                  <td className="p-3 sm:p-4 text-rose-400">
                     <span className="inline-flex items-center gap-1.5">
-                      <FiX className="text-rose-400" />
-                      <span>8% - 15% daily battery drain</span>
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="p-4 text-slate-200 font-medium">Wake-Up Lag</td>
-                  <td className="p-4 text-emerald-400 font-bold">
-                    <span className="inline-flex items-center gap-1.5">
-                      <FiCheck className="text-emerald-400" />
-                      <span>0ms (Instant hardware attach)</span>
-                    </span>
-                  </td>
-                  <td className="p-4 text-rose-400">
-                    <span className="inline-flex items-center gap-1.5">
-                      <FiX className="text-rose-400" />
-                      <span>500ms - 1.2s black screen delay</span>
+                      <FiX className="text-rose-400 flex-shrink-0" />
+                      <span>8% - 15% daily drain</span>
                     </span>
                   </td>
                 </tr>
                 <tr>
-                  <td className="p-4 text-slate-200 font-medium">Video Decoder</td>
-                  <td className="p-4 text-emerald-400 font-bold">
+                  <td className="p-3 sm:p-4 text-slate-200 font-medium">Wake-Up Lag</td>
+                  <td className="p-3 sm:p-4 text-emerald-400 font-bold">
                     <span className="inline-flex items-center gap-1.5">
-                      <FiCheck className="text-emerald-400" />
-                      <span>Native MediaCodec + OpenGL ES 3.0</span>
+                      <FiCheck className="text-emerald-400 flex-shrink-0" />
+                      <span>0ms (Instant attach)</span>
                     </span>
                   </td>
-                  <td className="p-4 text-slate-400">Basic Software / WebViews</td>
+                  <td className="p-3 sm:p-4 text-rose-400">
+                    <span className="inline-flex items-center gap-1.5">
+                      <FiX className="text-rose-400 flex-shrink-0" />
+                      <span>500ms - 1.2s delay</span>
+                    </span>
+                  </td>
                 </tr>
                 <tr>
-                  <td className="p-4 text-slate-200 font-medium">Privacy & Ad-Trackers</td>
-                  <td className="p-4 text-emerald-400 font-bold">
+                  <td className="p-3 sm:p-4 text-slate-200 font-medium">Video Decoder</td>
+                  <td className="p-3 sm:p-4 text-emerald-400 font-bold">
                     <span className="inline-flex items-center gap-1.5">
-                      <FiShield className="text-emerald-400" />
+                      <FiCheck className="text-emerald-400 flex-shrink-0" />
+                      <span>MediaCodec + OpenGL ES 3.0</span>
+                    </span>
+                  </td>
+                  <td className="p-3 sm:p-4 text-slate-400">Basic Software / WebViews</td>
+                </tr>
+                <tr>
+                  <td className="p-3 sm:p-4 text-slate-200 font-medium">Privacy & Ad-Trackers</td>
+                  <td className="p-3 sm:p-4 text-emerald-400 font-bold">
+                    <span className="inline-flex items-center gap-1.5">
+                      <FiShield className="text-emerald-400 flex-shrink-0" />
                       <span>100% Ad-Free, No Data Mining</span>
                     </span>
                   </td>
-                  <td className="p-4 text-rose-400">
+                  <td className="p-3 sm:p-4 text-rose-400">
                     <span className="inline-flex items-center gap-1.5">
-                      <FiX className="text-rose-400" />
+                      <FiX className="text-rose-400 flex-shrink-0" />
                       <span>Fullscreen pop-up ads</span>
                     </span>
                   </td>
                 </tr>
                 <tr>
-                  <td className="p-4 text-slate-200 font-medium">Offline Mode</td>
-                  <td className="p-4 text-emerald-400 font-bold">
+                  <td className="p-3 sm:p-4 text-slate-200 font-medium">Offline Mode</td>
+                  <td className="p-3 sm:p-4 text-emerald-400 font-bold">
                     <span className="inline-flex items-center gap-1.5">
-                      <FiCheck className="text-emerald-400" />
-                      <span>Encrypted Vault (Plays without Wi-Fi)</span>
+                      <FiCheck className="text-emerald-400 flex-shrink-0" />
+                      <span>Encrypted Vault (Offline)</span>
                     </span>
                   </td>
-                  <td className="p-4 text-slate-400">Requires continuous internet streaming</td>
+                  <td className="p-3 sm:p-4 text-slate-400">Requires continuous internet</td>
                 </tr>
               </tbody>
             </table>
@@ -1424,17 +1425,17 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="max-w-4xl mx-auto px-6 py-16">
-        <div className="text-center mb-10">
+      <section id="faq" className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="text-center mb-8 sm:mb-10">
           <div className="text-xs font-bold tracking-widest text-teal-400 uppercase mb-2">
             Got Questions?
           </div>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
             Frequently Asked Questions
           </h2>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-2.5 sm:space-y-3">
           {faqs.map((faq, index) => {
             const isOpen = openFaq === index;
             return (
@@ -1446,9 +1447,9 @@ export default function Home() {
               >
                 <button
                   onClick={() => toggleFaq(index)}
-                  className="w-full p-5 flex items-center justify-between text-left text-sm md:text-base font-bold text-white hover:text-teal-300 transition-colors cursor-pointer"
+                  className="w-full p-4 sm:p-5 flex items-center justify-between text-left text-sm md:text-base font-bold text-white hover:text-teal-300 transition-colors cursor-pointer"
                 >
-                  <span>{faq.q}</span>
+                  <span className="pr-2">{faq.q}</span>
                   {isOpen ? (
                     <FiChevronUp className="text-teal-400 flex-shrink-0" />
                   ) : (
@@ -1456,7 +1457,7 @@ export default function Home() {
                   )}
                 </button>
                 {isOpen && (
-                  <div className="px-5 pb-5 text-xs sm:text-sm text-slate-400 leading-relaxed">
+                  <div className="px-4 sm:px-5 pb-4 sm:pb-5 text-xs sm:text-sm text-slate-400 leading-relaxed">
                     {faq.a}
                   </div>
                 )}
@@ -1467,13 +1468,33 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/5 py-8 text-center text-xs text-slate-500">
+      <footer className="border-t border-white/5 py-8 pb-24 sm:pb-8 text-center text-xs text-slate-500 px-4">
         <div className="flex items-center justify-center gap-2 mb-2">
           <Image src="/logo.png" alt="VividWake" width={18} height={18} className="object-contain" />
           <span className="font-bold text-slate-300">VividWake Sideload Distribution</span>
         </div>
         <p>© 2026 VividWake Team. All rights reserved. Sideload edition for Android 9.0 - Android 15.</p>
       </footer>
+
+      {/* Mobile-Only Sticky Bottom Floating Action Bar */}
+      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#06090e]/95 backdrop-blur-lg border-t border-teal-500/30 p-3 shadow-2xl flex items-center justify-between gap-3">
+        <div className="flex items-center gap-2 min-w-0">
+          <div className="w-8 h-8 rounded-lg overflow-hidden ring-1 ring-teal-500/40 flex-shrink-0 bg-slate-900 flex items-center justify-center">
+            <Image src="/logo.png" alt="Logo" width={22} height={22} className="object-contain" />
+          </div>
+          <div className="truncate">
+            <div className="text-xs font-bold text-white leading-tight truncate">VividWake APK</div>
+            <div className="text-[10px] text-teal-400 font-semibold">100% Free • Android</div>
+          </div>
+        </div>
+        <a
+          href="/api/download"
+          className="flex-shrink-0 inline-flex items-center gap-1.5 bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white px-4 py-2 rounded-xl text-xs font-extrabold shadow-lg shadow-emerald-600/30 active:scale-95 transition-all"
+        >
+          <FiDownload className="text-sm" />
+          <span>Download (19.7 MB)</span>
+        </a>
+      </div>
     </div>
   );
 }
